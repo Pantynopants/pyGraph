@@ -33,9 +33,13 @@ def debug_print(object, debug = True):
         print(object)
 
 INF = 32767
-# do convert from table to matrix without models
+
 def load_graph(filePath = 'graph.csv'):
-    
+    """
+    do convert from table to matrix without models
+    return:
+        DataFrame
+    """
     df = pd.read_csv(filePath, encoding='utf8', skiprows=0)
     start = list(df['start'])
     end = list(df['end'])
@@ -56,32 +60,9 @@ def load_graph(filePath = 'graph.csv'):
         result.set_value(i[0], i[1], i[2])
         result.set_value(i[1], i[0], i[2])
 
-    # result, result_matrix = Floyd_algorithm(result)
+    # result, result_matrix = floyd(result)
 
     return result
-
-def Floyd_algorithm(result):
-    """
-    para:
-        pd.dataframe
-    return:
-        pd.dataframe, martix(list(list))
-    """
-    points_list = result.index.tolist()
-    point_dict = dict(zip([i for i in range(len(points_list))], points_list))
-    
-    result_matrix = result.as_matrix()
-    # Floyd-Warshall algorithm
-    for k in range(len(result_matrix)):
-        for i in range(len(result_matrix)):
-            for j in range(len(result_matrix)):
-                if(result_matrix[i][k] < INF and result_matrix[k][j] < INF and result_matrix[i][j] > result_matrix[i][k] + result_matrix[k][j]):
-                    
-                    result.set_value(point_dict[i], point_dict[j], result_matrix[i][k] + result_matrix[k][j])
-                    result.set_value(point_dict[j], point_dict[i], result_matrix[i][k] + result_matrix[k][j])
-
-                    result_matrix[i][j] = result_matrix[i][k] + result_matrix[k][j] 
-    return result, result_matrix
 
 
 def load_csv_to_models(filePath = 'graph.csv'):
