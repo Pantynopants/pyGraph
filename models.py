@@ -21,7 +21,16 @@ class ALGraph(Mapping):
         return iter(self._storage)  
     def __len__(self):
         return len(self._storage)
-
+    def pop(self, key):
+        if type(key) == list or type(key) == set:
+            for i in key:
+                if i not in self._storage.keys():
+                    continue
+                del(self._storage[i])
+            return self._storage.keys()
+        result = self._storage[key]
+        del(self._storage[key])
+        return result
     def __repr__(self):
         dictrepr = dict.__repr__(self._storage)
         # return '%s(%s)' % (type(self).__name__, dictrepr)

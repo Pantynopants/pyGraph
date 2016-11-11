@@ -56,9 +56,9 @@ def load_graph(filePath = 'graph.csv'):
         result.set_value(i[0], i[1], i[2])
         result.set_value(i[1], i[0], i[2])
 
-    result, result_matrix = Floyd_algorithm(result)
+    # result, result_matrix = Floyd_algorithm(result)
 
-    return result, result_matrix
+    return result
 
 def Floyd_algorithm(result):
     """
@@ -104,7 +104,7 @@ def load_csv_to_models(filePath = 'graph.csv'):
         pVNode = VNode(line[0], pArcNode)
         add_dict(alg, pVNode.name, pVNode.nextArcNode)
         re_pArcNode = ArcNode({line[0]:line[2]})
-        re_pVNode = VNode(line[1], pArcNode)
+        re_pVNode = VNode(line[1], re_pArcNode)
         add_dict(alg, re_pVNode.name, re_pVNode.nextArcNode)
 
     print(len(alg.keys()))
@@ -113,7 +113,7 @@ def load_csv_to_models(filePath = 'graph.csv'):
 def ALGraph_to_martix(alg):
     points_list = set([i for i in alg.keys()] + [k for j in alg.values() for k in j.keys()])
 
-    result = pd.DataFrame(INF*np.ones( (len(points_list), len(points_list) ) ), index = points_list, columns = points_list, encoding='utf-8')
+    result = pd.DataFrame(INF*np.ones( (len(points_list), len(points_list) ) ), index = points_list, columns = points_list)
     print(result.info())
     for i in points_list:        
         result.set_value(i, i, 0)
@@ -138,23 +138,26 @@ class MyEncoder(json.JSONEncoder):
 
         return obj.__dict__
 
-def process_graph(graph, *func = [print()]):
-    for k,v in graph.items():
-        # if v is not None:func(k),
-        for x,y in v.items():
-            func(x),
-            func(y)
+# def process_graph(graph, *func = [print()]):
+#     for k,v in graph.items():
+#         # if v is not None:func(k),
+#         for x,y in v.items():
+#             func(x),
+#             func(y)
 
 if __name__ == '__main__':
     # result, _ = load_graph()
     # 
     temp = load_csv_to_models()
-    process_graph(temp)
-    print json.dumps(dict(temp), ensure_ascii = False, cls = MyEncoder)
-    # for x in temp:
-    #     for y in x.nextArcNode:
-    #         print(x.name, y.endViewName, y.weight)
+    for k,v in temp.items():
+        if v is not None:print(k + ":"),
+        for x,y in v.items():
+            print(x),
+            print(y)
+        print("#"*40)
+    # print json.dumps(dict(temp), ensure_ascii = False, cls = MyEncoder)
+    
             
-    # result, _ = Floyd_algorithm(ALGraph_to_martix(temp))
+    result = load_graph()
 
-    # print(result)
+    print(result)
