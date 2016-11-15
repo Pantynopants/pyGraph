@@ -4,16 +4,20 @@ import numpy as np
 import pandas as pd
 import re
 import json  
+import codecs  
+import algorithms
 from models import *
 
-import codecs  
-  
+INF = 32767
+
 def readFile(filePath = 'graph.csv', encoding = "utf-8"):   
     return csv.reader(open(filePath,'r'))   
 
 def writeFile(filePath = 'graph.csv', u = None, encoding = "utf-8"):  
     with codecs.open(filePath, "w", encoding) as f:  
         f.write(u) 
+
+
 def add_dict(thedict, *args): 
 
     if len(args) == 3:
@@ -32,7 +36,18 @@ def debug_print(object, debug = True):
     if debug == True:
         print(object)
 
-INF = 32767
+def create_matrix(df_index):
+    """
+    para:index(view name here) of all
+        array-like
+    return:
+        dataframe
+    """
+    result = pd.DataFrame(INF*np.ones( (len(df_index), len(df_index) ) ), index = df_index, columns = df_index)    
+    # point_dict = dict(zip([i for i in range(len(df_index))], df_index))
+    for i in df_index:        
+        result.set_value(i, i, 0)
+    return result
 
 def load_graph(filePath = 'graph.csv'):
     """
@@ -51,17 +66,11 @@ def load_graph(filePath = 'graph.csv'):
     # print len(point_dict.keys())
     df_matrix = df.as_matrix()
     # print(result)
-    result = pd.DataFrame(32767*np.ones( (len(points_list), len(points_list) ) ), index = points_list, columns = points_list)
-    
-    point_dict = dict(zip([i for i in range(len(points_list))], points_list))
-    for i in points_list:        
-        result.set_value(i, i, 0)
+    result = create_matrix(points_list)
     for i in df_matrix:
         result.set_value(i[0], i[1], i[2])
         result.set_value(i[1], i[0], i[2])
-
-    # result, result_matrix = floyd(result)
-
+    
     return result
 
 
@@ -90,6 +99,8 @@ def load_csv_to_models(filePath = 'graph.csv'):
 
     print(len(alg.keys()))
     return alg
+
+
 # http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/
 def ALGraph_to_martix(alg):
     points_list = set([i for i in alg.keys()] + [k for j in alg.values() for k in j.keys()])
@@ -104,6 +115,7 @@ def ALGraph_to_martix(alg):
     
     return result
 
+
 def is_graph_type_ALGraph(graph):
     if type(graph) == ALGraph:
         print("ALGraph")
@@ -112,12 +124,14 @@ def is_graph_type_ALGraph(graph):
         print("df martix")
         return False
 
+
 class MyEncoder(json.JSONEncoder):
     def default(self, obj):
         if (not isinstance(obj, ALGraph) or not isinstance(obj, ArcNode)):
             return super(MyEncoder, self).default(obj)
 
         return obj.__dict__
+
 
 # def process_graph(graph, *func = [print()]):
 #     for k,v in graph.items():
@@ -131,11 +145,12 @@ if __name__ == '__main__':
     # 
     temp = load_csv_to_models()
     for k,v in temp.items():
-        if v is not None:print(k + ":"),
+        temp_str = str(k) + ""
         for x,y in v.items():
-            print(x),
-            print(y)
+            temp_str = temp_str + x + y + "\n"
+            print(temp_str)
         print("#"*40)
+
     # print json.dumps(dict(temp), ensure_ascii = False, cls = MyEncoder)
     
             
