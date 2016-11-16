@@ -63,7 +63,8 @@ class EdgesetArray(object):
     """ EdgesetArray
     compaired with .csv file,  it added the list of vertex
     also indegree recoding
-    
+    for both digraph and undirected graph;
+
     property:
         vertex(_v): pd.dataframe 
         edge(_e): pd.dataframe
@@ -128,18 +129,14 @@ class EdgesetArray(object):
         self.update_indegree(end)
         self._e = pd.concat([self._e, s1], axis = 0)
         # self._e.reindex(range(len(self._e)))
-        # print(self._e)
 
     def del_edge(self, start = None, end = None):
         """
         better to use keyword delete 1 edge
         """
-        # print(end)
         self.update_indegree(end, -1) 
-        # print(len(self._e))
         print(self.get_edge(start, end))
         self._e = self._e.drop(self.get_edge(start, end))
-        # print(len(self._e))
                        
 
     edge = property(get_edge, set_edge, del_edge)
@@ -150,9 +147,6 @@ class EdgesetArray(object):
         http://blog.chinaunix.net/xmlrpc.php?r=blog/article&uid=23100982&id=3540311
         index canbe anytype, both int and unicode -> vertexid
         """
-        # if type(vertexid) == unicode and type(vertexid) == int :
-        #    return self._v[vertexid] # degree of the point
-        # print(vertexid)
         return self._v[vertexid]
     
     def set_vertex(self, vertexid, val):
@@ -163,25 +157,10 @@ class EdgesetArray(object):
         para: name of vertex
             unicode
         """
-        
-        # self.del_edge(point_name = name)
-        # print(self._e.loc[:, [u"start"]])
+
         del_poi_as_start = self._e[ self._e[u"start"] == name]
-        # print(del_poi_as_start.index)
-        # print(del_poi_as_start.loc[:, [u"end"]])
 
-        # target_index = [0]
-        # while len(target_index) != 0:
-        #     target_index = self._e[ self._e[u"start"] == name].index
-        #     i = target_index[0]
         indexs = [i for i in del_poi_as_start.index]
-        # print(indexs)
-            # print(self._e.iloc[i, :][u"end"])
-            # print(self._e.iloc[i,[u"end"] ])
-        # print(type(name), type(self._e.iloc[indexs, :][u"end"]), type(self._e.loc[0, u"end"]))
-        # print(name), 
-        # print(self._e.loc[15, u"start"])
-
         # self.del_edge(name, self._e.loc[0, u"end"])
         while indexs:  
             # print("success")       
@@ -192,17 +171,10 @@ class EdgesetArray(object):
         # del_poi_as_end = self._e[ self._e.loc[:, [u"end"]].isin([name])]
         del_poi_as_end = self._e[ self._e[u"end"] == name]
         indexs = [i for i in del_poi_as_end.index]
-        # print(del_poi_as_end)
-        # print(self._e)
-        while indexs:  
-            # print("success")  
-            # print(indexs) 
-            # print(self._e.loc[indexs[0], u"start"]),
-            # print(name)    
+        while indexs:   
             self.del_edge(self._e.loc[indexs[0], u"start"], name)
             del_poi_as_end = self._e[ self._e[u"end"] == name]
-            indexs = [i for i in del_poi_as_end.index]
-        
+            indexs = [i for i in del_poi_as_end.index]       
 
         # self._e = self._e.drop( self._e[ self._e.loc[u"start"].isin(point_name)].index )
         # self._e = self._e.drop( self._e[ self._e.loc[u"end"].isin(point_name)].index )
@@ -212,6 +184,16 @@ class EdgesetArray(object):
 
     vertex = property(get_vertex, set_vertex, del_vertex)
     
+    def load_csv(self, filePath = "data/graph.csv"):
+        self._e = pd.read_csv(filePath, encoding = 'utf8', skiprows = 1, names = self.df_index)
+        print(self._e)
+        start = list(self._e[u'start'])
+        end = list(self._e[u'end'])
+        point_dict = { i:0
+            for i in start+end
+        }
+        v = point_dict.keys()
+        self._v = pd.DataFrame(np.zeros( (1, len(v) ) ), columns = v, index = ["0"]) 
 
     def route_to_edgeSetArray(self, route_list):
         """
@@ -226,13 +208,17 @@ class EdgesetArray(object):
         print(self._e)
         return self
 
+    def sort_weight(self, columns=None, ascending=True ):
+        """get sorted matrix, update self
+        """
+        self._e = self._e.sort(columns, ascending = ascending)
+        return self._e
+
     def update_indegree(self, end_poi, operation = 1):
         """helper func
         for every time add a edge, +1 indegree
         del an edge, -1
         """
-        # print(end_poi),
-        # print(operation)
         self.set_vertex(end_poi, self.get_vertex(end_poi) + operation)
 
     def get_indegrees(self):
@@ -243,7 +229,14 @@ class EdgesetArray(object):
         return self._v
 
     def get_all_edges(self):
+        """return dataframe
+        """
         return self._e
+
+    def get_all_vertexes(self):
+        """return list
+        """
+        return list(self._v.columns.values)
     
 
     # some operation of series see:www.cnblogs.com/smallcrystal/p/5809864.html

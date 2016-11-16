@@ -6,6 +6,10 @@ import pandas as pd
 import heapq
 
 from models import *
+
+"""
+all algorithms in this model receive Pandas.DataFrame as input
+"""
 # tutorial http://stackoverflow.com/questions/22897209/dijkstras-algorithm-in-python
 # http://www.cnblogs.com/biyeymyhjob/archive/2012/07/31/2615833.html
 
@@ -106,8 +110,8 @@ def prim_heap(graph):
     """
     n = len(graph )
 
-    # vertexs = [u"北门"]
-    vertexs = [graph.index[0]]
+    # vertexes = [u"北门"]
+    vertexes = [graph.index[0]]
 
     edges = {}
     total_v = set(graph.index) #{}
@@ -119,22 +123,22 @@ def prim_heap(graph):
             for w,v in zip(graph[unicode_v], graph[unicode_v].index) 
             if 0 < w < utils.INF and v != unicode_v]
 
-    heap = get_heap(list(vertexs)[0])
+    heap = get_heap(list(vertexes)[0])
     heapq.heapify(heap)
     # print heapq.nlargest(1, heap, key = lambda x:x[1])
     edge_list = []
-    while len(vertexs) != n:
-        # get min weight edge in graph in <u,v>, u in vertexs and v is not
+    while len(vertexes) != n:
+        # get min weight edge in graph in <u,v>, u in vertexes and v is not
         # next_w_v = heapq.nsmallest(1, heap, key = lambda x:x[1]) #[(w,v)]
         next_w_v = heapq.heappop(heap) #pop it. the min edge use only once
         print(next_w_v[1])
-        if next_w_v[1] in vertexs:
+        if next_w_v[1] in vertexes:
             continue                        
         
-        vertexs.append(next_w_v[1])
+        vertexes.append(next_w_v[1])
         edge_list.append( (next_w_v[2], next_w_v[1]) )
         for w,v,f in get_heap(next_w_v[1]):
-            if v not in vertexs:                
+            if v not in vertexes:                
                 heapq.heappush(heap, (w,v,f) )
         
     return edge_list                        
@@ -165,6 +169,8 @@ def prim(graph):
     print(dis)  
     print(pre)
     return (dis, pre)
+
+# ref https://github.com/israelst/Algorithms-Book--Python
 
 def DFSTraverse_path(graph, start, goal = None):
     """

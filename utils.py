@@ -70,8 +70,7 @@ def load_graph(filePath = 'data/graph.csv'):
     result = create_matrix(points_list)
     for i in df_matrix:
         result.set_value(i[0], i[1], i[2])
-        result.set_value(i[1], i[0], i[2])
-    
+        result.set_value(i[1], i[0], i[2])   
     return result
 
 
@@ -85,24 +84,31 @@ def load_csv_to_models(filePath = 'data/graph.csv'):
         (headVNode, headArcNode)
     """
     headVNode, headArcNode = VNode(), ArcNode()
-    
-    f = readFile()
+    # with open(filePath) as f:
+    f = open(filePath) 
     f.next()
-    alg = ALGraph()
+# f = codecs.open(filePath,'r','utf-8')
     
+    alg = ALGraph()
+    # TODO
     for line in f:
-        pArcNode = ArcNode({line[1]:line[2]})
-        pVNode = VNode(line[0], pArcNode)
+        start =  line.split(",")[0].decode('utf-8')
+        end = line.split(",")[1].decode('utf-8')
+        weight = line.split(",")[2].decode('utf-8')
+
+        pArcNode = ArcNode({end : weight})
+        pVNode = VNode(start, pArcNode)
         add_dict(alg, pVNode.name, pVNode.nextArcNode)
-        re_pArcNode = ArcNode({line[0]:line[2]})
-        re_pVNode = VNode(line[1], re_pArcNode)
+        re_pArcNode = ArcNode({start:end})
+        re_pVNode = VNode(end, re_pArcNode)
         add_dict(alg, re_pVNode.name, re_pVNode.nextArcNode)
 
-    print(len(alg.keys()))
+    # print(len(alg.keys()))
     return alg
 
 
-# http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/
+# ref: http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/
+
 def ALGraph_to_martix(alg):
     points_list = set([i for i in alg.keys()] + [k for j in alg.values() for k in j.keys()])
 
@@ -131,8 +137,10 @@ def graph_type(graph):
         print("ALGraph")
         return "ALGraph", graph
     elif type(graph) == pd.DataFrame:
-        print("df martix")
+        print("df matrix")
         return "df", graph
+
+# http://stackoverflow.com/questions/10724854/how-to-do-a-conditional-decorator-in-python-2-6
 
 def get_total_dist(func):
     """deco func: get_total_distance of the list, from a martix
@@ -169,13 +177,6 @@ class MyEncoder(json.JSONEncoder):
 
         return obj.__dict__
 
-
-# def process_graph(graph, *func = [print()]):
-#     for k,v in graph.items():
-#         # if v is not None:func(k),
-#         for x,y in v.items():
-#             func(x),
-#             func(y)
 
 if __name__ == '__main__':
     # result, _ = load_graph()
