@@ -5,15 +5,16 @@ import pandas as pd
 import re
 import json  
 import codecs  
+import functools
 import algorithms
 from models import *
 
 INF = 32767
 
-def readFile(filePath = 'graph.csv', encoding = "utf-8"):   
+def readFile(filePath = 'data/graph.csv', encoding = "utf-8"):   
     return csv.reader(open(filePath,'r'))   
 
-def writeFile(filePath = 'graph.csv', u = None, encoding = "utf-8"):  
+def writeFile(filePath = 'data/graph.csv', u = None, encoding = "utf-8"):  
     with codecs.open(filePath, "w", encoding) as f:  
         f.write(u) 
 
@@ -49,7 +50,7 @@ def create_matrix(df_index):
         result.set_value(i, i, 0)
     return result
 
-def load_graph(filePath = 'graph.csv'):
+def load_graph(filePath = 'data/graph.csv'):
     """
     do convert from table to matrix without models
     return:
@@ -74,7 +75,7 @@ def load_graph(filePath = 'graph.csv'):
     return result
 
 
-def load_csv_to_models(filePath = 'graph.csv'):
+def load_csv_to_models(filePath = 'data/graph.csv'):
     """
     for loop:read the csv 2 times
     because it is undirected graph
@@ -115,14 +116,50 @@ def ALGraph_to_martix(alg):
     
     return result
 
+def LocateVex(adjacency_matrix, current_poi):
+    """
+    para:
+        DataFrame, unicode
+    return: name(s) of adjacency point of current_poi
+        DataFrame
+    """
+    # start = adjacency_matrix.loc[current_poi]
+    return adjacency_matrix[ (adjacency_matrix[current_poi] > 0) & (adjacency_matrix[current_poi] < INF)].index
 
-def is_graph_type_ALGraph(graph):
+def graph_type(graph):
     if type(graph) == ALGraph:
         print("ALGraph")
-        return True
+        return "ALGraph", graph
     elif type(graph) == pd.DataFrame:
         print("df martix")
-        return False
+        return "df", graph
+
+def get_total_dist(func):
+    """deco func: get_total_distance of the list, from a martix
+    for those funcs who get df as input and list as output
+    """
+    @functools.wraps(func)
+    def _inner(graph, **kwargs):
+        """graph: dataframe
+        """
+        dis_list = func(graph, **kwargs)
+        origin_return = dis_list
+        if dis_list == None or len(dis_list) == 0:
+            print(" %s wrong return value." % func.__name__)
+            return
+        if type(dis_list) == tuple:
+            dis_list = dis_list[1]
+        templist = [] #[(a,b)]
+        if type(dis_list[0]) != tuple:
+            for i in range(len(dis_list) - 1):
+                templist.append( (dis_list[i], dis_list[i+1]) )
+        else: templist = dis_list
+        # print(templist)
+        distance = 0
+        for i,j in templist:
+            distance += graph.loc[i,j]
+        return origin_return, distance
+    return _inner
 
 
 class MyEncoder(json.JSONEncoder):

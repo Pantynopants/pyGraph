@@ -7,6 +7,12 @@ import pandas as pd
 class ALGraph(Mapping):
     """ALGraph
     same operation as dict
+
+    using:
+    >>> graph = {'A': {'B':1, 'C':2},
+         'B': {'A':1, 'D':2, 'E':3},
+         ...}
+
     """
     def __init__(self, *args, **kwargs):
         self._storage = dict(*args, **kwargs)
@@ -56,6 +62,7 @@ class ArcNode(ALGraph):
 class EdgesetArray(object):
     """ EdgesetArray
     compaired with .csv file,  it added the list of vertex
+    also indegree recoding
     
     property:
         vertex(_v): pd.dataframe 
@@ -114,6 +121,8 @@ class EdgesetArray(object):
         para:
             unicode, unicode, int
         """
+        if len(self.get_edge(start, end)) != 0: # this edge already exist
+            return
         s1 = pd.DataFrame({u"start":start, u"end":end, u"weight":weight}, index=[len(self._e)])
         # self._e.append(s1, ignore_index=True )
         self.update_indegree(end)
@@ -166,16 +175,16 @@ class EdgesetArray(object):
         #     target_index = self._e[ self._e[u"start"] == name].index
         #     i = target_index[0]
         indexs = [i for i in del_poi_as_start.index]
-        print(indexs)
+        # print(indexs)
             # print(self._e.iloc[i, :][u"end"])
             # print(self._e.iloc[i,[u"end"] ])
         # print(type(name), type(self._e.iloc[indexs, :][u"end"]), type(self._e.loc[0, u"end"]))
         # print(name), 
-        print(self._e.loc[15, u"start"])
+        # print(self._e.loc[15, u"start"])
 
         # self.del_edge(name, self._e.loc[0, u"end"])
         while indexs:  
-            print("success")       
+            # print("success")       
             self.del_edge(name, self._e.loc[indexs[0], u"end"])
             del_poi_as_start = self._e[ self._e[u"start"] == name]
             indexs = [i for i in del_poi_as_start.index]
@@ -184,12 +193,12 @@ class EdgesetArray(object):
         del_poi_as_end = self._e[ self._e[u"end"] == name]
         indexs = [i for i in del_poi_as_end.index]
         # print(del_poi_as_end)
-        print(self._e)
+        # print(self._e)
         while indexs:  
-            print("success")  
-            print(indexs) 
-            print(self._e.loc[indexs[0], u"start"]),
-            print(name)    
+            # print("success")  
+            # print(indexs) 
+            # print(self._e.loc[indexs[0], u"start"]),
+            # print(name)    
             self.del_edge(self._e.loc[indexs[0], u"start"], name)
             del_poi_as_end = self._e[ self._e[u"end"] == name]
             indexs = [i for i in del_poi_as_end.index]
@@ -208,7 +217,7 @@ class EdgesetArray(object):
         """
         change self, from a point chain to a edges set
         para:
-            route_list: a unicode list
+            route_list: (unicode) list
         return:
             Edgesetarray
         """
@@ -222,7 +231,8 @@ class EdgesetArray(object):
         for every time add a edge, +1 indegree
         del an edge, -1
         """
-        # print(end_poi)
+        # print(end_poi),
+        # print(operation)
         self.set_vertex(end_poi, self.get_vertex(end_poi) + operation)
 
     def get_indegrees(self):
@@ -239,9 +249,7 @@ class EdgesetArray(object):
     # some operation of series see:www.cnblogs.com/smallcrystal/p/5809864.html
 
 """
-graph = {'A': {'B':1, 'C':2},
-         'B': {'A':1, 'D':2, 'E':3},
-         ...}
+
 optimize
 http://www.kr41.net/2016/03-23-dont_inherit_python_builtin_dict_type.html
 http://stackoverflow.com/questions/3387691/python-how-to-perfectly-override-a-dict
