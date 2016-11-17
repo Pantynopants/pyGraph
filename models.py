@@ -51,8 +51,13 @@ class VNode(object):
     def __init__(self, name = "", nextArcNode = {}):        
         super(VNode, self).__init__()
         self.name = name
-        self.nextArcNode = nextArcNode        
+        self.nextArcNode = nextArcNode
 
+    get_name = lambda self : self.name
+    def set_name(self, newname):
+        self.name = newname
+
+    # name = property(get_name, set_name)
         
 class ArcNode(ALGraph):
     """road """
