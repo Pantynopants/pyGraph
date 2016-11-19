@@ -1,5 +1,7 @@
 # pyGraph
 
+A naive algorithm library about graph written by Python 
+
 ## ref
 https://github.com/mirob2005/Python_Data_Structures/tree/master/Graphs
 

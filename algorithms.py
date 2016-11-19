@@ -87,7 +87,7 @@ def floyd(graph):
         for i in range(len(result_matrix)):
             for j in range(len(result_matrix)):
                 if(result_matrix[i][k] < utils.INF and result_matrix[k][j] < utils.INF and result_matrix[i][j] > result_matrix[i][k] + result_matrix[k][j]):
-                    
+                    # for digraph
                     result.set_value(point_dict[i], point_dict[j], result_matrix[i][k] + result_matrix[k][j])
                     result.set_value(point_dict[j], point_dict[i], result_matrix[i][k] + result_matrix[k][j])
 

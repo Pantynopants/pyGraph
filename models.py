@@ -27,6 +27,9 @@ class ALGraph(Mapping):
         # print 'update', args, kwargs
         for k, v in dict(*args, **kwargs).iteritems():
             self._storage[k] = v
+
+    def __delitem__(self, key):
+        del self._storage[key]
     def __iter__(self):
         return iter(self._storage)  
     def __len__(self):

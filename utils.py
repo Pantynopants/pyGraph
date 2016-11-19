@@ -92,14 +92,14 @@ def load_csv_to_models(filePath = 'data/graph.csv'):
     alg = ALGraph()
     # TODO
     for line in f:
-        start =  line.split(",")[0].decode('utf-8')
-        end = line.split(",")[1].decode('utf-8')
-        weight = line.split(",")[2].decode('utf-8')
+        start =  line.strip().split(",")[0].decode('utf-8')
+        end = line.strip().split(",")[1].decode('utf-8')
+        weight = line.strip().split(",")[2].decode('utf-8')
 
-        pArcNode = ArcNode({end : weight})
+        pArcNode = ArcNode({end : int(weight)})
         pVNode = VNode(start, pArcNode)
         add_dict(alg, pVNode.name, pVNode.nextArcNode)
-        re_pArcNode = ArcNode({start:end})
+        re_pArcNode = ArcNode({start:int(weight)})
         re_pVNode = VNode(end, re_pArcNode)
         add_dict(alg, re_pVNode.name, re_pVNode.nextArcNode)
 
