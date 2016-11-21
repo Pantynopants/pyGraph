@@ -5,8 +5,6 @@ import utils
 import algorithms
 import algorithms_edgearr
 
-# http://python.jobbole.com/81467/
-
 import sys
 reload(sys)
 sys.setdefaultencoding( "utf-8" )
@@ -50,12 +48,13 @@ def main():
     #     print("\n")
 
     # temp = EdgesetArray()
-    # temp.load_csv()
+    # temp = temp.load_csv()
     # tree = algorithms_edgearr.kruskal(temp)
     # for x in tree:
     #     print(x[0]),
     #     print(x[1]),
     #     print(x[2])
+    
     # path = algorithms_edgearr.prim(temp)
     # for i,j in path.items():
     #     print(i), 
@@ -84,19 +83,17 @@ def main():
     #         print(x),
     #         print(y)
 
-    D = algorithms_edgearr.floyd_warshall1(temp)
-    for k,v in D.items():
-        for x,y in v.items():
-            print(k),
-            print(x),
-            print(y)
+    # D = algorithms_edgearr.floyd_warshall1(temp)
+    # for k,v in D.items():
+    #     for x,y in v.items():
+    #         print(k),
+    #         print(x),
+    #         print(y)
 
     print(distance)
 
-def park():
-    parking.start()
 
 if __name__ == '__main__':
-    main()
-    # park()
-    # recommend.start()
+    # main()
+    # parking.start()
+    recommend.start()

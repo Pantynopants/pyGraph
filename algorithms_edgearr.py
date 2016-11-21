@@ -13,8 +13,10 @@ def TopoSort(DGlist):
     can not act as a visitor to visit this nodes, to get circle path,
     because it has been confirmed: computer cannot judge the dead loop,
     by Turing
+
     para: sequent route, with directed; matrix
         list, dataframe
+
     return: circle of route
         list
     """
@@ -53,11 +55,12 @@ def TopoSort(DGlist):
                 stack.append(k)
         # TODO using hash instead of for loop
 
-
+@utils.not_implemented_for('DataFrame')
 def kruskal(graph):
     """
     para:
         EdgesetArray
+
     return:
         set( {()} )
 
@@ -118,18 +121,24 @@ some algorithms below using models.ALGraph
 def prim(graph):
     """
     simple input:
+    ```
     >>>graph = {
     ... 0: {1:1, 2:3, 3:4},
     ... 1: {0:1, 2:5},
     ... 2: {0:3, 1:5, 3:2},
     ... 3: {2:2, 0:4}
     ... }
-    
+    ```
+
     simple output:
+    ```
     {0: None, 1: 0, 2: 0, 3: 2}
+    ```
     ---
+
     para:
         ALGraph
+
     return:
         dict
     """
@@ -149,19 +158,22 @@ def kruskal_ALGraph(graph):
     """
     para:
         ALGraph
+
     return:
         set
 
     simple input:
+    ```
     >>> graph = {
     ... 0: {1:1, 2:3, 3:4},
     ... 1: {2:5},
     ... 2: {3:2},
     ... 3: set()
     ... }
+    ```
     output:
-    >>> print list(kruskal_ALGraph(graph)) 
-    #[(0, 1), (2, 3), (0, 2)]    
+    `>>> print list(kruskal_ALGraph(graph)) `
+    `#[(0, 1), (2, 3), (0, 2)]    `
     """
     def find(parent, u):
         if parent[u] != u:
@@ -188,12 +200,17 @@ def kruskal_ALGraph(graph):
 
 def bellman_ford(graph, s):
     """
-    para: graph, start_poi
-        ALGraph, unicode
-    return:
+    para
+    ------
+    graph:ALGraph
+    start_poi: unicode
+
+    return
+    -------
         dict, dict
 
     simple use:
+    ```
     >>> s, t, x, y, z = range(5)
     >>> W = {
         s: {t:10, y:5},
@@ -206,7 +223,7 @@ def bellman_ford(graph, s):
     >>> print [D[v] for v in [s, t, x, y, z]] # [0, 2, 4, 7, -2]
     >>> print s not in P # True
     >>> print [P[v] for v in [t, x, y, z]] == [x, y, s, t] # True
-
+    ```
     """
     # s = graph.keys().index(s)
     # print(s)
@@ -234,6 +251,7 @@ def dijkstra(graph, s):
         dict, dict
 
     simple use
+    ```
     >>> s, t, x, y, z = range(5)
     >>> W = {
     >>>     s: {t:10, y:5},
@@ -246,6 +264,7 @@ def dijkstra(graph, s):
     >>> print [D[v] for v in [s, t, x, y, z]] # [0, 8, 9, 5, 7]
     >>> print s not in P # True
     >>> print [P[v] for v in [t, x, y, z]] == [y, t, s, y] # True
+    ```
     """
     D, P, Q, S = {s:0}, {}, [(0,s)], set()   
     while Q:                                 
@@ -267,10 +286,16 @@ def johnson(graph):
     perform well in sparse graph
     complexity : O(mnlgn) 
 
-    para: ALGraph
-    return: dict{dict{}}, dict{dict{}}
+    para
+    -----
+    graph:ALGraph
+
+    return
+    --------
+    dict{dict{}}, dict{dict{}}
 
     simple use:
+    ```
     >>> a, b, c, d, e = range(5)
     >>> W = {
         a: {c:1, d:7},
@@ -285,6 +310,7 @@ def johnson(graph):
     >>> print [D[c][v] for v in [a, b, c, d, e]] # [-1, -5, 0, -2, 2]
     >>> print [D[d][v] for v in [a, b, c, d, e]] # [5, 1, 6, 0, 8]
     >>> print [D[e][v] for v in [a, b, c, d, e]] # [1, -3, 2, -4, 0]
+    ```
     """
     graph = copy.deepcopy(graph)                           
     s = graph.keys()[0]  
@@ -305,12 +331,16 @@ def johnson(graph):
 
 def floyd_warshall1(graph):
     """
-    para:
-        ALGraph
-    return:
+    para
+    ------
+    graph: ALGraph
+
+    return
+    -------
         dict{dict{}}
 
     simple use:
+    ```
     >>> a, b, c, d, e = range(1,6) # One-based
     >>> W = {
     >>>     a: {c:1, d:7},
@@ -329,18 +359,33 @@ def floyd_warshall1(graph):
     >>> print [D[c][v] for v in [a, b, c, d, e]] # [-1, -5, 0, -2, 2]
     >>> print [D[d][v] for v in [a, b, c, d, e]] # [5, 1, 6, 0, 8]
     >>> print [D[e][v] for v in [a, b, c, d, e]] # [1, -3, 2, -4, 0]
-
+    ```
     """
     distance = copy.deepcopy(graph)                           
     for k in distance:                               
         for u in distance:
             for v in distance:
-                distance[u][v] = min(distance[u][v], distance[u][k] + distance[k][v])
+                a, b = 0,0
+                try:
+                    a = distance[u][v]                    
+                except :
+                    a = utils.INF
+                try:
+                    b = distance[u][k] + distance[k][v]
+                except :
+                    b = utils.INF
+                else:
+                    utils.add_dict(distance, u, v, min(a,b))               
     return distance
 
 ################# helper func #################
 
 def relax(W, u, v, D, P):
+    """
+    reference
+    ----------
+    .. [1] http://python.jobbole.com/81467/
+    """
     # print (W[u][v].encode('utf-8'))
     # print type(D.get(u, utils.INF))
     d = D.get(u, utils.INF) + int(W[u][v])

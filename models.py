@@ -2,16 +2,27 @@
 from collections import Mapping
 import numpy as np
 import pandas as pd
+import utils
 # from collections.abc import Mapping
+
+
+__all__ = ['ALGraph', 'VNode', 'ArcNode', 'EdgesetArray'] 
 
 class ALGraph(Mapping):
     """ALGraph
     same operation as dict
 
-    using:
+    using
+    -------
+    ```
     >>> graph = {'A': {'B':1, 'C':2},
          'B': {'A':1, 'D':2, 'E':3},
          ...}
+    ```
+
+    ref
+    ----
+    .. [1] http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/
 
     """
     def __init__(self, *args, **kwargs):
@@ -21,7 +32,9 @@ class ALGraph(Mapping):
         self._storage[key] = val
     def __getitem__(self, key = ""):  
         # val = dict.__getitem__(self, key)
-        
+        # if key not in self._storage.keys():
+        #     return utils.INF
+
         return self._storage[key]
     def update(self, *args, **kwargs):
         # print 'update', args, kwargs
@@ -49,6 +62,12 @@ class ALGraph(Mapping):
         # return '%s(%s)' % (type(self).__name__, dictrepr)
         return '%s' % (dictrepr)
 
+    def add_nodes(self, vnode):
+        pass
+
+    def is_ALGraph(self):
+        return True
+
 class VNode(object):
     """point of view"""
     def __init__(self, name = "", nextArcNode = {}):        
@@ -73,10 +92,21 @@ class EdgesetArray(object):
     also indegree recoding
     for both digraph and undirected graph;
 
-    property:
+    property
+    ----------
         vertex(_v): pd.dataframe 
         edge(_e): pd.dataframe
-        
+
+    for knowledge, see
+    ----
+    .. [1] www.cnblogs.com/smallcrystal/p/5809864.html
+
+    reference
+    -----------
+    optimize
+    .. [1] http://www.kr41.net/2016/03-23-dont_inherit_python_builtin_dict_type.html
+    .. [2] http://stackoverflow.com/questions/3387691/python-how-to-perfectly-override-a-dict
+    .. [3] http://stackoverflow.com/questions/2390827/how-to-properly-subclass-dict-and-override-getitem-setitem
     """
     
     def __init__(self, v = [], e = None):
@@ -127,8 +157,11 @@ class EdgesetArray(object):
         """
         add 1 row each time
         then update the indegree list
-        para:
-            unicode, unicode, int
+
+        para
+        -----
+        start: unicode
+        unicode: int
         """
         if len(self.get_edge(start, end)) != 0: # this edge already exist
             return
@@ -151,8 +184,13 @@ class EdgesetArray(object):
 
     def get_vertex(self, vertexid):
         """
-        according to
-        http://blog.chinaunix.net/xmlrpc.php?r=blog/article&uid=23100982&id=3540311
+        para
+        ----
+        vertexid: unicode (also int)
+
+        reference
+        ----------
+        .. [1] http://blog.chinaunix.net/xmlrpc.php?r=blog/article&uid=23100982&id=3540311
         index canbe anytype, both int and unicode -> vertexid
         """
         return self._v[vertexid]
@@ -193,8 +231,14 @@ class EdgesetArray(object):
     vertex = property(get_vertex, set_vertex, del_vertex)
     
     def load_csv(self, filePath = "data/graph.csv"):
+        """
+        return
+        -------
+            self 
+        (do not forget use =)
+        """
         self._e = pd.read_csv(filePath, encoding = 'utf8', skiprows = 1, names = self.df_index)
-        print(self._e)
+        # print(self._e)
         start = list(self._e[u'start'])
         end = list(self._e[u'end'])
         point_dict = { i:0
@@ -202,6 +246,7 @@ class EdgesetArray(object):
         }
         v = point_dict.keys()
         self._v = pd.DataFrame(np.zeros( (1, len(v) ) ), columns = v, index = ["0"]) 
+        return self
 
     def route_to_edgeSetArray(self, route_list):
         """
@@ -245,14 +290,7 @@ class EdgesetArray(object):
         """return list
         """
         return list(self._v.columns.values)
+
+    def is_EdgesetArray(self):
+        return True
     
-
-    # some operation of series see:www.cnblogs.com/smallcrystal/p/5809864.html
-
-"""
-
-optimize
-http://www.kr41.net/2016/03-23-dont_inherit_python_builtin_dict_type.html
-http://stackoverflow.com/questions/3387691/python-how-to-perfectly-override-a-dict
-http://stackoverflow.com/questions/2390827/how-to-properly-subclass-dict-and-override-getitem-setitem
-"""    

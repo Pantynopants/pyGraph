@@ -10,22 +10,27 @@ from models import *
 """
 all algorithms in this model receive Pandas.DataFrame as input
 """
-# tutorial http://stackoverflow.com/questions/22897209/dijkstras-algorithm-in-python
-# http://www.cnblogs.com/biyeymyhjob/archive/2012/07/31/2615833.html
 
 # @utils.get_total_dist
 def dijkstra(graph, start = None, end = None):
-    """
+    r"""
     # TODO: change to ndarray
     para:
         DataFrame, str(unicode), str(unicode)
+
     return:distance from start to every point; the path from start point to others
         dist = {
         pointName:( distance = graph[start] (dataframe), isVisted = 0, path = [] )
         }
         or
         distance:number, path:list
+
+    reference
+    ----------
+    .. [1] tutorial http://stackoverflow.com/questions/22897209/dijkstras-algorithm-in-python
+    .. [2] http://www.cnblogs.com/biyeymyhjob/archive/2012/07/31/2615833.html
     """    
+
     # dist:distance from start point to others
     # dist = {
     #   pointName:( distance = graph[start] (dataframe), isVisted = 0, path = [] )
@@ -70,19 +75,24 @@ def dijkstra(graph, start = None, end = None):
     
 
 def floyd(graph):
-    """
+    r"""
     let all points' edges to simplified
-    para:
-        pd.dataframe
-    return:
-        pd.dataframe
+    Floyd-Warshall algorithm O(n^3)
+
+    para
+    ------
+    graph: pd.dataframe
+
+    return
+    -------
+    result:pd.dataframe
     """
     result = graph.copy()
     points_list = result.index.tolist()
     point_dict = dict(zip([i for i in range(len(points_list))], points_list))
     
     result_matrix = result.as_matrix()
-    # Floyd-Warshall algorithm
+    
     for k in range(len(result_matrix)):
         for i in range(len(result_matrix)):
             for j in range(len(result_matrix)):
@@ -101,10 +111,11 @@ def MST(graph, method = "prim_heap"):
     
 @utils.get_total_dist
 def prim_heap(graph): 
-    """
+    r"""
     using heap to optimtiz algorithm
     para:
         dataframe
+
     return: a list of MST
         list
     """
@@ -170,14 +181,20 @@ def prim(graph):
     print(pre)
     return (dis, pre)
 
-# ref https://github.com/israelst/Algorithms-Book--Python
 
 def DFSTraverse_path(graph, start, goal = None):
-    """
+    r"""
     DFS with path as return value
+
     iterable.
     para:
         graph:DataFrame, start:unicode(according to pandas)
+
+    reference
+    ---------
+    https://github.com/israelst/Algorithms-Book--Python
+
+
     """
     print(graph)
     stack = [(start, [start])]
@@ -195,9 +212,10 @@ def DFSTraverse_path(graph, start, goal = None):
 
 @utils.get_total_dist
 def DFSTraverse(graph, start = None):
-    """
+    r"""
     para:
         graph:DataFrame, start:unicode(according to pandas)
+
     return:
         visited(list), path(list [(a,b),(b,c),,,]): real road, consecutive
     """
