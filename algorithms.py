@@ -12,6 +12,8 @@ all algorithms in this model receive Pandas.DataFrame as input
 """
 
 # @utils.get_total_dist
+@utils.not_implemented_for('ALGraph')
+@utils.not_implemented_for('EdgesetArray')
 def dijkstra(graph, start = None, end = None):
     r"""
     # TODO: change to ndarray
@@ -73,7 +75,8 @@ def dijkstra(graph, start = None, end = None):
     else:
         return dist[end][0], dist[end][2]
     
-
+@utils.not_implemented_for('ALGraph')
+@utils.not_implemented_for('EdgesetArray')
 def floyd(graph):
     r"""
     let all points' edges to simplified
@@ -108,7 +111,9 @@ def floyd(graph):
 def MST(graph, method = "prim_heap"):
     if method == "prim_heap":
         return prim_heap(graph)
-    
+
+@utils.not_implemented_for('ALGraph')
+@utils.not_implemented_for('EdgesetArray')
 @utils.get_total_dist
 def prim_heap(graph): 
     r"""
@@ -141,7 +146,7 @@ def prim_heap(graph):
     while len(vertexes) != n:
         # get min weight edge in graph in <u,v>, u in vertexes and v is not
         # next_w_v = heapq.nsmallest(1, heap, key = lambda x:x[1]) #[(w,v)]
-        next_w_v = heapq.heappop(heap) #pop it. the min edge use only once
+        next_w_v = heapq.heappop(heap) #pop it. the min edge use once only
         print(next_w_v[1])
         if next_w_v[1] in vertexes:
             continue                        
@@ -154,7 +159,18 @@ def prim_heap(graph):
         
     return edge_list                        
 
+
 def prim(graph):
+    """
+    para
+    -----
+    2D array-like
+
+    return
+    -------
+    dis:list (distace)
+    pre:list (path to that distance)
+    """
     n = len(graph)    
     dis = [0]*n  
     pre = [0]*n  
@@ -177,11 +193,12 @@ def prim(graph):
             if dis[i] > graph[k][i] and not flag[i]:  
                 dis[i] = graph[k][i]  
                 pre[i] = k  
-    print(dis)  
-    print(pre)
+    # print(dis)  
+    # print(pre)
     return (dis, pre)
 
-
+@utils.not_implemented_for('ALGraph')
+@utils.not_implemented_for('EdgesetArray')
 def DFSTraverse_path(graph, start, goal = None):
     r"""
     DFS with path as return value
@@ -209,7 +226,8 @@ def DFSTraverse_path(graph, start, goal = None):
             else:
                 stack.append((next_key, path + [next_key]))
 
-
+@utils.not_implemented_for('ALGraph')
+@utils.not_implemented_for('EdgesetArray')
 @utils.get_total_dist
 def DFSTraverse(graph, start = None):
     r"""

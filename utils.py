@@ -77,7 +77,8 @@ def create_matrix(df_index):
         result.set_value(i, i, 0)
     return result
 
-def load_graph(filePath = 'data/graph.csv'):
+def load_graph(filePath = 'data/graph.csv',
+    start_position = 0, end_position = 1, weight_positon = 2):
     """
     do convert from table to matrix without models
     return:
@@ -96,12 +97,13 @@ def load_graph(filePath = 'data/graph.csv'):
     # print(result)
     result = create_matrix(points_list)
     for i in df_matrix:
-        result.set_value(i[0], i[1], i[2])
-        result.set_value(i[1], i[0], i[2])   
+        result.set_value(i[start_position], i[end_position], i[weight_positon])
+        result.set_value(i[end_position], i[start_position], i[weight_positon])   
     return result
 
 
-def load_csv_to_models(filePath = 'data/graph.csv', 
+def load_csv_to_models(filePath = 'data/graph.csv',
+    start_position = 0, end_position = 1, weight_positon = 2, 
     vnode = "models.VNode", arcnode = "models.ArcNode", 
     algraph = "models.ALGraph" ):
     """
@@ -123,17 +125,17 @@ def load_csv_to_models(filePath = 'data/graph.csv',
         algraph: (models.ALGraph by defult)
     """
 
-    headVNode, headArcNode = eval(vnode)(), eval(arcnode)()
-    # with open(filePath) as f:
     f = open(filePath) 
-    f.next()
-    # f = codecs.open(filePath,'r','utf-8')
+    # f.next()
+
     
     alg = eval(algraph)()
     for line in f:
+        if "start" in line:
+            continue
         start =  line.strip().split(",")[0].decode('utf-8')
         end = line.strip().split(",")[1].decode('utf-8')
-        weight = line.strip().split(",")[2].decode('utf-8')
+        weight = line.strip().split(",")[2].decode('utf-8')        
 
         pArcNode = eval(arcnode)({end : int(weight)})
         pVNode = eval(vnode)(start, pArcNode)
@@ -171,20 +173,24 @@ def LocateVex(adjacency_matrix, current_poi):
     return adjacency_matrix[ (adjacency_matrix[current_poi] > 0) & (adjacency_matrix[current_poi] < INF)].index
 
 def graph_type(graph):
-    if type(graph) == ALGraph:
+    if type(graph) == models.ALGraph:
         print("ALGraph")
         return "ALGraph", graph
     elif type(graph) == pd.DataFrame:
         print("df matrix")
         return "df", graph
 
-################### decirator #########################
+################### decorator #########################
 
 
 def get_total_dist(func):
     """deco func: get_total_distance of the list, from a martix
     for those funcs who get df as input and list as output
-
+    
+    return
+    -------
+    origin_return, distance:int
+    
     ref
     ---
     .. [1] http://stackoverflow.com/questions/10724854/how-to-do-a-conditional-decorator-in-python-2-6
@@ -224,8 +230,7 @@ def not_implemented_for(*graph_types):
         The decorated function.
     Raises
     ------
-    NetworkXNotImplemnted
-    If any of the packages cannot be imported
+    KeyError
     Notes
     -----
     Multiple types are joined logically with "and".
@@ -245,16 +250,13 @@ def not_implemented_for(*graph_types):
     .. [1] https://github.com/networkx/networkx/blob/6e20b952a957af820990f68d9237609198088816/networkx/utils/decorators.py#L16
     """
     @decorator
-    def _not_implemented_for(f,*args,**kwargs):
+    def _not_implemented_for(f, *args, **kwargs):
         graph = args[0]
-        # terms= {'directed':graph.is_directed(),
-        #         'undirected':not graph.is_directed(),
-        #         'multigraph':graph.is_multigraph(),
-        #         'graph':not graph.is_multigraph()}
+
         terms = {
-        'ALGraph':graph.is_ALGraph(),
+        'ALGraph':type(graph) == models.ALGraph,
         'DataFrame':type(graph) == pd.DataFrame,
-        'EdgesetArray':graph.is_EdgesetArray()
+        'EdgesetArray':type(graph) == models.EdgesetArray
         }
         match = True
         try:

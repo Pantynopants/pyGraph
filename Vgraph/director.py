@@ -4,6 +4,33 @@ import algorithms
 import utils
 import pandas as pd
 import copy 
+import os
+ls = os.linesep
+
+def input_TourSortGraph():
+    """
+    create csv file by user input
+    """
+    csv_poi = []
+    csv_poi.append("start,end,weight")
+    while True:       
+        line = raw_input("enter sth, separate by ',' and -1 to exist")
+
+        
+        if line.strip() == "-1":
+            break
+        data = line.split(',')
+        if len(data) != 3:
+            print("wrong input, plz try again")
+            continue
+        
+        csv_poi.append(line.strip())
+
+
+    fobj = open("data/graph1.csv",'w') 
+    fobj.writelines(['%s%s' % (x,ls) for x in csv_poi ])
+    fobj.close()
+    print 'DONE!'
 
 @utils.get_total_dist
 def CreatTourSortGraph(graph):
@@ -16,7 +43,7 @@ def CreatTourSortGraph(graph):
     if utils.graph_type(graph)[0] == "ALGraph":
         return
     else:
-        (dfs_visit, path), dist = algorithms.DFSTraverse(graph, start = u'北门')
+        (dfs_visit, path), dist = algorithms.DFSTraverse(graph, start = graph.columns.values[0])
         i = 0
         while i < len(dfs_visit) - 1:
             # if is_fin(dfs_visit[:i+2], graph.index):

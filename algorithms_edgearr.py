@@ -39,7 +39,7 @@ def TopoSort(DGlist):
     del_list = []
     while stack: #O(v*e)
         del_poi = stack.pop()
-        print("del" + del_poi)
+        # print("del" + del_poi)
         # can ont delete twice
         if del_poi in del_list:
             continue
@@ -47,6 +47,7 @@ def TopoSort(DGlist):
         edarray = edarray.del_vertex(del_poi)
 
         indegree_list = edarray.get_indegrees()
+        print("circle road is")
         print(indegree_list)
         # print(edarray.get_all_edges().values)
         # map(list,zip(*indegree_list.values))
@@ -56,6 +57,7 @@ def TopoSort(DGlist):
         # TODO using hash instead of for loop
 
 @utils.not_implemented_for('DataFrame')
+@utils.not_implemented_for('ALGraph')
 def kruskal(graph):
     """
     para:
@@ -106,8 +108,7 @@ def kruskal(graph):
 
     for edge in edges:
         vertice1, vertice2, weight = edge
-        # print(vertice1), 
-        # print(vertice2)
+
         if find(vertice1) != find(vertice2):
             union(vertice1, vertice2)
             minimum_spanning_tree.add((vertice1, vertice2, weight))
@@ -117,9 +118,21 @@ def kruskal(graph):
 """
 some algorithms below using models.ALGraph
 """
- 
+
+@utils.not_implemented_for('DataFrame')
+@utils.not_implemented_for('EdgesetArray')
 def prim(graph):
     """
+    
+
+    para
+    ------
+        ALGraph
+
+    return
+    -------
+        dict
+
     simple input:
     ```
     >>>graph = {
@@ -135,12 +148,6 @@ def prim(graph):
     {0: None, 1: 0, 2: 0, 3: 2}
     ```
     ---
-
-    para:
-        ALGraph
-
-    return:
-        dict
     """
     start = graph.keys()[0]
     result, Q = {}, [(0, None, start)]
@@ -153,7 +160,8 @@ def prim(graph):
     return result
 
 
- 
+@utils.not_implemented_for('DataFrame')
+@utils.not_implemented_for('EdgesetArray')
 def kruskal_ALGraph(graph):
     """
     para:
@@ -197,7 +205,8 @@ def kruskal_ALGraph(graph):
             union(parent, rank, u, v)
     return result
  
-
+@utils.not_implemented_for('DataFrame')
+@utils.not_implemented_for('EdgesetArray')
 def bellman_ford(graph, s):
     """
     para
@@ -243,6 +252,8 @@ def bellman_ford(graph, s):
         raise ValueError('negative cycle')  
     return D, P  
 
+@utils.not_implemented_for('DataFrame')
+@utils.not_implemented_for('EdgesetArray')
 def dijkstra(graph, s):
     """
     para:
@@ -279,6 +290,8 @@ def dijkstra(graph, s):
             heappush(Q, (D[v], v))             
     return D, P 
 
+@utils.not_implemented_for('DataFrame')
+@utils.not_implemented_for('EdgesetArray')
 def johnson(graph):    
     """
     johnson: combine Bellman-Ford with Dijkstra
@@ -329,6 +342,8 @@ def johnson(graph):
             D[u][v] += h[v] - h[u]              # ... readjust the distance
     return D, P  
 
+@utils.not_implemented_for('DataFrame')
+@utils.not_implemented_for('EdgesetArray')
 def floyd_warshall1(graph):
     """
     para

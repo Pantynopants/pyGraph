@@ -13,25 +13,7 @@ def start():
     .. [2] http://www.jb51.net/article/64123.htm
     .. [3] http://www.jb51.net/article/87479.htm
     """
-    # setattr(models.VNode, "score", 0)
-    # setattr(models.VNode, "view_details", "")
 
-    # modify_VNode = lambda name, bases, attrs: type(name, bases, attrs)
-
-    # newVNode = modify_VNode('newVNode', (models.VNode,), {'score': 5*random.uniform(0, 1) , 'view_details': ""})
-    # a = newVNode()
-
-    # print(dir(newVNode))
-    # print newVNode, a.score, a.view_details
-    # print newVNode.__name__
-    # pVNode = newVNode("start", None)
-    # pVNode.score = 2
-    # # print(pVNode.get_name(), pVNode.score, pVNode.view_details)
-
-    # alg = utils.load_csv_to_models()
-    # print(alg[u"北门"])
-    # print(hasattr(models.VNode, "score"))
-    # print(dir(models.VNode))
 
     temp = models.EdgesetArray()
     utils.enhance_method(models.EdgesetArray, 'load_csv', add_comment)

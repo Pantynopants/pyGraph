@@ -235,7 +235,7 @@ class EdgesetArray(object):
         return
         -------
             self 
-        (do not forget use =)
+        (do not forget use = instead of singal instruct)
         """
         self._e = pd.read_csv(filePath, encoding = 'utf8', skiprows = 1, names = self.df_index)
         # print(self._e)
