@@ -4,8 +4,13 @@ import algorithms
 import utils
 import pandas as pd
 import copy 
+import codecs
 import os
 ls = os.linesep
+import chardet
+import sys
+reload(sys)
+sys.setdefaultencoding( "utf-8" )
 
 def input_TourSortGraph():
     """
@@ -25,10 +30,19 @@ def input_TourSortGraph():
             continue
         
         csv_poi.append(line.strip())
-
-
-    fobj = open("data/graph1.csv",'w') 
-    fobj.writelines(['%s%s' % (x,ls) for x in csv_poi ])
+    # fobj = open("data/graph1.csv",'w') 
+    fobj = codecs.open("data/graph1.csv", "w", "utf-8")
+    for i in csv_poi:
+        # if chardet.detect(i)['encoding'] == 'GB2312':
+        #     temp = unicode(i, "GB2312")
+        # elif chardet.detect(i)['encoding'] == 'ascii':
+        #     temp = unicode(i, "ascii")
+        temp = unicode(i, chardet.detect(i)['encoding'])
+        print type(temp)
+        # print(chardet.detect(temp))
+        fobj.write(temp.strip())
+        fobj.write(ls)
+    # fobj.writelines(['%s%s' % (x,ls) for x in csv_poi ])
     fobj.close()
     print 'DONE!'
 

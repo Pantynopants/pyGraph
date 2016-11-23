@@ -13,7 +13,8 @@ def TopoSort(DGlist):
     can not act as a visitor to visit this nodes, to get circle path,
     because it has been confirmed: computer cannot judge the dead loop,
     by Turing
-
+    
+    result may different since the start point is not same every time
     para: sequent route, with directed; matrix
         list, dataframe
 
@@ -39,27 +40,34 @@ def TopoSort(DGlist):
     del_list = []
     while stack: #O(v*e)
         del_poi = stack.pop()
-        # print("del" + del_poi)
-        # can ont delete twice
+        # print("del" + del_poi)    # can ont delete twice
         if del_poi in del_list:
             continue
         del_list.append(del_poi)
         edarray = edarray.del_vertex(del_poi)
-
         indegree_list = edarray.get_indegrees()
-        print("circle road is")
-        print(indegree_list)
-        # print(edarray.get_all_edges().values)
+        
+        
         # map(list,zip(*indegree_list.values))
         for k,v in zip(list(indegree_list.columns.values), indegree_list.values[0]):
             if v == 0:
                 stack.append(k)
         # TODO using hash instead of for loop
+    print("circle road is")
+    print(indegree_list)
+    circle_path = []
+    for i in indegree_list.columns.values:
+        circle_path.append(i)
+    return circle_path
+
 
 @utils.not_implemented_for('DataFrame')
 @utils.not_implemented_for('ALGraph')
 def kruskal(graph):
     """
+    an algorithm for gengrate MST
+    time complexity O(E * log2 E)
+
     para:
         EdgesetArray
 
@@ -122,8 +130,8 @@ some algorithms below using models.ALGraph
 @utils.not_implemented_for('DataFrame')
 @utils.not_implemented_for('EdgesetArray')
 def prim(graph):
-    """
-    
+    """an algorithm for gengrate MST
+    O(v^2)
 
     para
     ------
@@ -151,19 +159,24 @@ def prim(graph):
     """
     start = graph.keys()[0]
     result, Q = {}, [(0, None, start)]
+
     while Q:
         _, p, u = heappop(Q)
+
         if u in result: continue
         result[u] = p
         for v, w in graph[u].items():
-            heappush(Q, (w, u, v)) #weight, predecessor node, node
+            #weight, predecessor node, node
+            heappush(Q, (w, u, v)) 
+
     return result
 
 
 @utils.not_implemented_for('DataFrame')
 @utils.not_implemented_for('EdgesetArray')
 def kruskal_ALGraph(graph):
-    """
+    """an algorithm for gengrate MST
+    time complexity O(E * log2 E)
     para:
         ALGraph
 
@@ -196,7 +209,9 @@ def kruskal_ALGraph(graph):
             parent[u] = v
         if rank[u] == rank[v]:              # Move v up a level
             rank[v] += 1
-    E = [(graph[u][v],u,v) for u in graph for v in graph[u]]
+
+    E = [(graph[u][v],u,v) for u in graph for v in graph[u]] # (weight, start, end)
+
     result = set()
     parent, rank = {u:u for u in graph}, {u:0 for u in graph}   # comp. reps and ranks
     for _, u, v in sorted(E):
@@ -207,8 +222,12 @@ def kruskal_ALGraph(graph):
  
 @utils.not_implemented_for('DataFrame')
 @utils.not_implemented_for('EdgesetArray')
-def bellman_ford(graph, s):
+def bellman_ford(graph, start = None):
     """
+    also work in negative weight 
+    this is the advantage compired with dijkstra
+    time complexity O(|V|*|E|)O(|V|*|E|)
+
     para
     ------
     graph:ALGraph
@@ -234,9 +253,9 @@ def bellman_ford(graph, s):
     >>> print [P[v] for v in [t, x, y, z]] == [x, y, s, t] # True
     ```
     """
-    # s = graph.keys().index(s)
-    # print(s)
-    D, P = {s:0}, {}                           
+    if start == None:
+        start = graph.keys()[0]
+    D, P = {start:0}, {}                           
     for rnd in graph: 
 
         changed = False                        
@@ -254,10 +273,11 @@ def bellman_ford(graph, s):
 
 @utils.not_implemented_for('DataFrame')
 @utils.not_implemented_for('EdgesetArray')
-def dijkstra(graph, s):
-    """
+def dijkstra(graph, start = None):
+    """get 1 point to others points' shortest path
+    time complexity O(n^2)
     para:
-        ALGraph, unicode
+        ALGraph, unicode(start point)
     return:
         dict, dict
 
@@ -271,13 +291,15 @@ def dijkstra(graph, s):
     >>>     y: {t:3, x:9, z:2},
     >>>     z: {x:6, s:7}
     >>>     }
-    >>> D, P = dijkstra(W, s)
+    >>> D, P = dijkstra(W, start)
     >>> print [D[v] for v in [s, t, x, y, z]] # [0, 8, 9, 5, 7]
     >>> print s not in P # True
     >>> print [P[v] for v in [t, x, y, z]] == [y, t, s, y] # True
     ```
     """
-    D, P, Q, S = {s:0}, {}, [(0,s)], set()   
+    if start == None:
+        start = graph.keys()[0]
+    D, P, Q, S = {start:0}, {}, [(0,start)], set()   
     while Q:                                 
         _, u = heappop(Q)                       # Node with lowest estimate
         if u in S: continue                     # Already visited
@@ -297,7 +319,7 @@ def johnson(graph):
     johnson: combine Bellman-Ford with Dijkstra
     solve all point's short path  in graph
     perform well in sparse graph
-    complexity : O(mnlgn) 
+    time complexity : O(V * E * lg(V)) 
 
     para
     -----
@@ -345,7 +367,10 @@ def johnson(graph):
 @utils.not_implemented_for('DataFrame')
 @utils.not_implemented_for('EdgesetArray')
 def floyd_warshall1(graph):
-    """
+    """solve all point's shortest path
+    O(|V|^3)
+    get shortest path of all vertex
+
     para
     ------
     graph: ALGraph
@@ -392,6 +417,43 @@ def floyd_warshall1(graph):
                 else:
                     utils.add_dict(distance, u, v, min(a,b))               
     return distance
+
+def DFSTraverse(graph, start = None):
+    """
+
+    graph = {'A': set(['B', 'C']),
+         'B': set(['A', 'D', 'E']),
+         'C': set(['A', 'F']),
+         'D': set(['B']),
+         'E': set(['B', 'F']),
+         'F': set(['C', 'E'])}
+    
+    ref
+    -----
+    .. [1] http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/
+
+    """
+    if start == None:
+        start = graph.keys()[0]
+    visited, stack = set(), [start]
+    while stack:
+        vertex = stack.pop()
+        if vertex not in visited:
+            visited.add(vertex)
+            stack.extend(set(graph[vertex].keys()) - visited)
+    return visited
+
+
+def BFSTraverse(graph, start = None):
+    if start == None:
+        start = graph.keys()[0]
+    visited, queue = set(), [start]
+    while queue:
+        vertex = queue.pop(0)
+        if vertex not in visited:
+            visited.add(vertex)
+            queue.extend(set(graph[vertex].keys()) - visited)
+    return visited
 
 ################# helper func #################
 

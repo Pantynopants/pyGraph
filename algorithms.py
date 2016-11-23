@@ -4,7 +4,7 @@ import utils
 import copy
 import pandas as pd  
 import heapq
-
+import Queue
 from models import *
 
 """
@@ -15,8 +15,8 @@ all algorithms in this model receive Pandas.DataFrame as input
 @utils.not_implemented_for('ALGraph')
 @utils.not_implemented_for('EdgesetArray')
 def dijkstra(graph, start = None, end = None):
-    r"""
-    # TODO: change to ndarray
+    r"""get 1 point to others points' shortest path
+    time complexity O(n^2)
     para:
         DataFrame, str(unicode), str(unicode)
 
@@ -38,8 +38,8 @@ def dijkstra(graph, start = None, end = None):
     #   pointName:( distance = graph[start] (dataframe), isVisted = 0, path = [] )
     # }
     if start == None:
-        print("wrong input: plz input a start point")
-        return
+        print("wrong input: plz input a start point. use random by default")
+        start = graph.columns.values[0]
     dis = zip(graph[start].index, graph[start])
     dist = {
         k:[v, 0, []]
@@ -117,6 +117,7 @@ def MST(graph, method = "prim_heap"):
 @utils.get_total_dist
 def prim_heap(graph): 
     r"""
+    O(v^2) for bad situation
     using heap to optimtiz algorithm
     para:
         dataframe
@@ -125,7 +126,6 @@ def prim_heap(graph):
         list
     """
     n = len(graph )
-
     # vertexes = [u"北门"]
     vertexes = [graph.index[0]]
 
@@ -147,21 +147,19 @@ def prim_heap(graph):
         # get min weight edge in graph in <u,v>, u in vertexes and v is not
         # next_w_v = heapq.nsmallest(1, heap, key = lambda x:x[1]) #[(w,v)]
         next_w_v = heapq.heappop(heap) #pop it. the min edge use once only
-        print(next_w_v[1])
         if next_w_v[1] in vertexes:
-            continue                        
-        
+            continue                                
         vertexes.append(next_w_v[1])
         edge_list.append( (next_w_v[2], next_w_v[1]) )
         for w,v,f in get_heap(next_w_v[1]):
             if v not in vertexes:                
-                heapq.heappush(heap, (w,v,f) )
-        
+                heapq.heappush(heap, (w,v,f) )      
     return edge_list                        
 
 
 def prim(graph):
-    """
+    """an algorithm for gengrate MST
+    time complexity O(v^2)
     para
     -----
     2D array-like
@@ -239,6 +237,8 @@ def DFSTraverse(graph, start = None):
     """
     
     visited = []
+    if start == None:
+        start = graph.columns.values[0]
     stack = [start]
     while stack:
         vertex = stack.pop()
@@ -261,3 +261,44 @@ def DFSTraverse(graph, start = None):
 
     return visited, path
 
+
+@utils.not_implemented_for('ALGraph')
+@utils.not_implemented_for('EdgesetArray')
+@utils.get_total_dist
+def BFSTraverse(graph, start = None):
+    r"""
+    para:
+        graph:DataFrame, start:unicode(according to pandas)
+
+    return:
+        visited(list), path(list [(a,b),(b,c),,,]): real road, consecutive
+    """
+    
+    visited = []
+    q = Queue.Queue()
+    if start == None:
+        start = graph.columns.values[0]
+    q.put(start)
+    while not q.empty():
+        vertex = q.get()
+        visited.append(vertex)
+        for i in utils.LocateVex(graph, vertex):         
+            if i in visited or i in q.queue:
+                continue
+            q.put(i)
+    # finish dfs       
+    # get path of BFS
+    # print(visited)
+
+    path = []
+    for i in range(len(visited) - 1):
+        if graph.loc[visited[i], visited[i+1]] == utils.INF:
+            for j in range(i+1):
+                if graph.loc[visited[j], visited[i+1]] != utils.INF:
+                    path.append( (visited[j], visited[i+1]) )
+                    break
+        elif graph.loc[visited[i], visited[i+1]] != 0:
+            path.append( (visited[i], visited[i+1]) )
+
+    # print(path)
+    return visited, path

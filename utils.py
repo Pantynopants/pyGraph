@@ -122,7 +122,7 @@ def load_csv_to_models(filePath = 'data/graph.csv',
 
     return
     -------
-        algraph: (models.ALGraph by defult)
+        algraph: (models.ALGraph by default)
     """
 
     f = open(filePath) 
@@ -207,7 +207,7 @@ def get_total_dist(func):
         if type(dis_list) == tuple:
             dis_list = dis_list[1]
         templist = [] #[(a,b)]
-        if type(dis_list[0]) != tuple:
+        if len(dis_list)>0 and type(dis_list[0]) != tuple:
             for i in range(len(dis_list) - 1):
                 templist.append( (dis_list[i], dis_list[i+1]) )
         else: templist = dis_list

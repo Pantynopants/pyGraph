@@ -4,7 +4,7 @@ import networkx as nx
 # import matplotlib.pyplot as plt
 from pylab import *
 
-mpl.rcParams['font.sans-serif'] = ['SimHei'] # defult font type 
+mpl.rcParams['font.sans-serif'] = ['SimHei'] # default font type 
   
 mpl.rcParams['axes.unicode_minus'] = False 
 
@@ -36,7 +36,7 @@ def create_nxgraph_from(path_list):
         G.add_edge(path_list[i], path_list[i+1])
     return G
 
-def show(G, path_list = None):
+def show(G, path_list = None, node_list = None):
     """
     ref
     ----
@@ -46,18 +46,24 @@ def show(G, path_list = None):
     """
     if path_list == None:
 
-        elarge = [(u,v) for (u,v,d) in G.edges(data=True) if d['weight'] > 6]
-        esmall = [(u,v) for (u,v,d) in G.edges(data=True) if d['weight'] <= 6]
+        elarge = [(u,v) for (u,v,d) in G.edges(data=True)]
+        # esmall = [(u,v) for (u,v,d) in G.edges(data=True) if d['weight'] <= 6]
+        esmall = []
     else:
         elarge = [(u,v) for (u,v,d) in G.edges(data=True)]
-        esmall = [ (path_list[i], path_list[i+1])
-            for i in range(len(path_list) - 1)
-        ]
+        if type(path_list[0]) != tuple:
+            esmall = [ (path_list[i], path_list[i+1])   # [()]
+                for i in range(len(path_list) - 1)
+            ]
+        else:
+            esmall = path_list
 
     pos = nx.spring_layout(G) # positions for all nodes
 
     # nodes
-    nx.draw_networkx_nodes(G,pos,node_size = 700)
+    nx.draw_networkx_nodes(G,pos,node_size = 500)
+    if node_list != None:
+        nx.draw_networkx_nodes(G,pos,nodelist = node_list, node_color = 'b', node_size = 600)
 
     # edges
     nx.draw_networkx_edges(G,pos,edgelist = elarge,alpha = 0.5,
@@ -70,6 +76,6 @@ def show(G, path_list = None):
     nx.draw_networkx_labels(G,pos,font_size=20,font_family='sans-serif')
 
     plt.axis('off')
-    # plt.savefig("weighted_graph.png") # save as png
+    # plt.savefig("Scenic.png") # save as png
     plt.show() # display
     return
