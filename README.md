@@ -1,6 +1,10 @@
 # pyGraph
 
 A naive algorithm library about graph written by Python 
+using DataFrame to solve some algorithm questions
+
+## Doc
+https://pantynopants.github.io/pyGraph/
 
 ## ref
 
