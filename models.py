@@ -230,14 +230,14 @@ class EdgesetArray(object):
 
     vertex = property(get_vertex, set_vertex, del_vertex)
     
-    def load_csv(self, filePath = "data/graph.csv"):
+    def load_csv(self, file_path = "data/graph.csv"):
         """
         return
         -------
             self 
         (do not forget use = instead of singal instruct)
         """
-        self._e = pd.read_csv(filePath, encoding = 'utf8', skiprows = 1, names = self.df_index)
+        self._e = pd.read_csv(file_path, encoding = 'utf8', skiprows = 1, names = self.df_index)
         # print(self._e)
         start = list(self._e[u'start'])
         end = list(self._e[u'end'])

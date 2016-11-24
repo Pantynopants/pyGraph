@@ -4,18 +4,20 @@ import networkx as nx
 # import matplotlib.pyplot as plt
 from pylab import *
 
+__all__ = ['load_csv_nx', 'create_nxgraph_from', 'show']
+
 mpl.rcParams['font.sans-serif'] = ['SimHei'] # default font type 
   
 mpl.rcParams['axes.unicode_minus'] = False 
 
-def load_csv_nx(filePath = 'data/graph.csv', start_position = 0, end_position = 1, weight_positon = 2):
+def load_csv_nx(file_path = 'data/graph.csv', start_position = 0, end_position = 1, weight_positon = 2):
     """
     """
     G = nx.Graph()
-    # with open(filePath) as f:
-    f = open(filePath) 
+    # with open(file_path) as f:
+    f = open(file_path) 
     
-    # f = codecs.open(filePath,'r','utf-8')
+    # f = codecs.open(file_path,'r','utf-8')
     
     for line in f:
         if "start" in line:
@@ -38,6 +40,9 @@ def create_nxgraph_from(path_list):
 
 def show(G, path_list = None, node_list = None):
     """
+    exapmle
+    >>> nxutil.show(g, node_list = circle_path)
+    >>> nxutil.show(g, path_list = path)
     ref
     ----
     .. [1] https://networkx.github.io/documentation/networkx-1.10/examples/drawing/random_geometric_graph.html

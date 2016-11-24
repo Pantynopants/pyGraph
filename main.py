@@ -4,10 +4,10 @@ from models import *
 import utils
 import algorithms
 import algorithms_edgearr
-import nx
+from nx import utils as nxutil
 import sys
 import os
-import chardet
+# import chardet
 import datetime
 
 reload(sys)
@@ -20,7 +20,7 @@ def main():
     # print("#"*40)
     distance = 0
     temp = utils.load_graph() #dataframe
-    # temp = utils.load_graph(filePath = 'data/topo3.csv',
+    # temp = utils.load_graph(file_path = 'data/topo3.csv',
     # start_position = 1, end_position = 2, weight_positon = 3)
     # temp = temp[u"北门"]
 
@@ -33,10 +33,10 @@ def main():
     # for i in path:
     #     print(i)
     # print("#"*40)   
-    # g = nx.utils.load_csv_nx()
-    # # nx.utils.show(g)
-    # # p = nx.utils.create_nxgraph_from(path)
-    # nx.utils.show(g, path_list = path)
+    # g = nxutil.load_csv_nx()
+    # # nxutil.show(g)
+    # # p = nxutil.create_nxgraph_from(path)
+    # nxutil.show(g, path_list = path)
 
 
     # algorithms_edgearr.TopoSort(path)
@@ -107,14 +107,14 @@ def main():
     print(distance)
 
 def compare():
-    df = utils.load_graph(filePath = 'data/topo4.csv',
+    df = utils.load_graph(file_path = 'data/topo4.csv',
         start_position = 1, end_position = 2, weight_positon = 3)
-    alg = utils.load_csv_to_models(filePath = 'data/topo4.csv',
+    alg = utils.load_csv_to_models(file_path = 'data/topo4.csv',
         start_position = 1, end_position = 2, weight_positon = 3)
 
-    df1 = utils.load_graph(filePath = 'data/topo2.csv',
+    df1 = utils.load_graph(file_path = 'data/topo2.csv',
                 start_position = 1, end_position = 2, weight_positon = 3)
-    alg1 = utils.load_csv_to_models(filePath = 'data/topo2.csv',
+    alg1 = utils.load_csv_to_models(file_path = 'data/topo2.csv',
                 start_position = 1, end_position = 2, weight_positon = 3)
 
 
@@ -180,8 +180,8 @@ def compare():
             print(algorithms_edgearr.kruskal_ALGraph.__doc__)
             ########### kruskal ###########
             edarr = EdgesetArray()
-            edarr = edarr.load_csv(filePath = 'data/topo4.csv')
-            # edarr = edarr.load_csv(filePath = 'data/GeneratedTopo_80points.csv')
+            edarr = edarr.load_csv(file_path = 'data/topo4.csv')
+            # edarr = edarr.load_csv(file_path = 'data/GeneratedTopo_80points.csv')
             # tree = algorithms_edgearr.kruskal(edarr)
             # for x in tree:
             #     print(x[0]),
@@ -218,41 +218,54 @@ def get_func_time(func, *arg, **kw):
 def start():
     """menu func
     """
-    print("welcome to tourism management system")
-    print("plz enter a number:")
-    print("1. input Scenic Spots graph")
-    print("2. show Scenic Spots graph")
-    print("3. show Tour guide Graph")
-    print("4. show circle road in guide Graph")
-    print("5. calculate shortest path and distance")
-    print("6. show road constraction plan")
-    print("7. search and sort Scenic Spots")
-    print("8. parking system")
-    print("9. algorithm compare")
-    print("0. exit")
+    
 
     flag = False
     g = None
     path = None
     shortest_path = None
+    file_path = None
     temp = utils.load_graph() #dataframe
-    # temp = utils.load_graph(filePath = 'data/topo3.csv',
+    # temp = utils.load_graph(file_path = 'data/topo3.csv',
     # start_position = 1, end_position = 2, weight_positon = 3)
-    while True:       
-        line = raw_input("enter sth, seperate by space\n")
+    while True:     
+        print("welcome to tourism management system")
+        print("plz enter a number:")
+        print("1. input Scenic Spots graph or change graph")
+        print("2. show Scenic Spots graph")
+        print("3. show Tour guide Graph")
+        print("4. show circle road in guide Graph")
+        print("5. calculate shortest path and distance")
+        print("6. show road constraction plan")
+        print("7. search and sort Scenic Spots")
+        print("8. parking system")
+        print("9. algorithm compare")
+        print("0. exit")  
+        line = raw_input("enter sth, seperate by space, 0 for exit\n")
         
 
         if line.strip() == "1":
-            director.input_TourSortGraph()
-            flag = True
-            temp = utils.load_graph(filePath = 'data/graph1.csv',
-        start_position = 0, end_position = 1, weight_positon = 2)
+            file_path = raw_input("enter file name, 0 for a new csv file to store your graph\n")
+            
+            if file_path.strip() == "0":
+                director.input_TourSortGraph()      #create csv file
+                flag = True
+                temp = utils.load_graph(file_path = 'data/graph1.csv',
+            start_position = 0, end_position = 1, weight_positon = 2)
+            else:
+                
+                temp = utils.load_graph(file_path = 'data/' + file_path.strip(),
+            start_position = 1, end_position = 2, weight_positon = 3)
 
         elif line.strip() == "2":
             if flag:
-                g = nx.utils.load_csv_nx('data/graph1.csv')
-            else: g = nx.utils.load_csv_nx()
-            nx.utils.show(g)
+                g = nxutil.load_csv_nx(file_path = 'data/graph1.csv')
+            elif g == None:
+                if file_path != None:
+                    g = nxutil.load_csv_nx(file_path = 'data/' + file_path.strip())
+                else:
+                    g = nxutil.load_csv_nx()
+            nxutil.show(g)
         elif line.strip() == "3":
             path, distance = director.CreatTourSortGraph(temp) 
             print("#"*40)
@@ -260,19 +273,22 @@ def start():
                 print(i)
             print("#"*40)   
             if g == None:
-                g = nx.utils.load_csv_nx()
-            nx.utils.show(g, path_list = path)
+                if file_path != None:
+                    g = nxutil.load_csv_nx(file_path = 'data/' + file_path.strip())
+                else:
+                    g = nxutil.load_csv_nx()
+            nxutil.show(g)
         elif line.strip() == "4":
             if path == None:
                 print("plz show Tour guide Graph first, now input 3")
                 continue
             circle_path = algorithms_edgearr.TopoSort(path)
             if g == None:
-                g = nx.utils.load_csv_nx()
-            nx.utils.show(g, node_list = circle_path)
+                g = nxutil.load_csv_nx()
+            nxutil.show(g, node_list = circle_path)
 
         elif line.strip() == "5":
-            poi = raw_input("enter startpoint and endpoint, input -1 for a default value")
+            poi = raw_input("enter startpoint|endpoint, seperate by |, input -1 for a default value")
             if len(poi.strip().split("|")) != 1:
                 # print chardet.detect(poi.strip().split("|")[0])
                 start = unicode(poi.strip().split("|")[0], "GB2312")    # for windows console
@@ -295,8 +311,8 @@ def start():
                     print(y)
                 print("\n")
             if g == None:
-                g = nx.utils.load_csv_nx()
-            nx.utils.show(g, path_list = shortest_path)
+                g = nxutil.load_csv_nx()
+            nxutil.show(g, path_list = shortest_path)
 
         elif line.strip() == "6":
             dis_list, distance = algorithms.MST(temp)
@@ -307,11 +323,12 @@ def start():
                  print(y)
             print(distance)
             if g == None:
-                g = nx.utils.load_csv_nx()
-            nx.utils.show(g, path_list = dis_list)
+                g = nxutil.load_csv_nx()
+            nxutil.show(g, path_list = dis_list)
 
         elif line.strip() == "7":
-            recommend.start()
+            recommend.start(file_path)
+            
         elif line.strip() == "8":
             parking.start()
         elif line.strip() == "9":
@@ -330,6 +347,6 @@ if __name__ == '__main__':
     # compare()
     # parking.start()
     # recommend.start()
-    # g = nx.utils.load_csv_nx(filePath = 'data/topo3.csv', start_position = 1, end_position = 2, weight_positon = 3)
-    # g = nx.utils.load_csv_nx()
-    # nx.utils.show(g)
+    # g = nxutil.load_csv_nx(file_path = 'data/topo3.csv', start_position = 1, end_position = 2, weight_positon = 3)
+    # g = nxutil.load_csv_nx()
+    # nxutil.show(g)

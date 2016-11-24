@@ -16,11 +16,11 @@ import models
 INF = 32767
 PRINT_DEBUG = True
 
-def readFile(filePath = 'data/graph.csv', encoding = "utf-8"):   
-    return csv.reader(open(filePath,'r'))   
+def readFile(file_path = 'data/graph.csv', encoding = "utf-8"):   
+    return csv.reader(open(file_path,'r'))   
 
-def writeFile(filePath = 'data/graph.csv', u = None, encoding = "utf-8"):  
-    with codecs.open(filePath, "w", encoding) as f:  
+def writeFile(file_path = 'data/graph.csv', u = None, encoding = "utf-8"):  
+    with codecs.open(file_path, "w", encoding) as f:  
         f.write(u) 
 
 
@@ -77,14 +77,14 @@ def create_matrix(df_index):
         result.set_value(i, i, 0)
     return result
 
-def load_graph(filePath = 'data/graph.csv',
+def load_graph(file_path = 'data/graph.csv',
     start_position = 0, end_position = 1, weight_positon = 2):
     """
     do convert from table to matrix without models
     return:
         DataFrame
     """
-    df = pd.read_csv(filePath, encoding='utf8', skiprows=0)
+    df = pd.read_csv(file_path, encoding='utf8', skiprows=0)
     start = list(df['start'])
     end = list(df['end'])
     # print len(start+end)
@@ -102,7 +102,7 @@ def load_graph(filePath = 'data/graph.csv',
     return result
 
 
-def load_csv_to_models(filePath = 'data/graph.csv',
+def load_csv_to_models(file_path = 'data/graph.csv',
     start_position = 0, end_position = 1, weight_positon = 2, 
     vnode = "models.VNode", arcnode = "models.ArcNode", 
     algraph = "models.ALGraph" ):
@@ -115,7 +115,7 @@ def load_csv_to_models(filePath = 'data/graph.csv',
 
     para
     ------
-        filePath(absoult or not):str
+        file_path(absoult or not):str
         vnode:str(class name, for creating class dynamic)
         arcnode:str
         algraph:str
@@ -125,7 +125,7 @@ def load_csv_to_models(filePath = 'data/graph.csv',
         algraph: (models.ALGraph by default)
     """
 
-    f = open(filePath) 
+    f = open(file_path) 
     # f.next()
 
     
