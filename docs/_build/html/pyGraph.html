@@ -1,0 +1,910 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pyGraph package &mdash; pyGraph 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pyGraph 0.1 documentation" href="index.html" />
+    <link rel="up" title="pyGraph" href="modules.html" />
+    <link rel="next" title="pyGraph.Vgraph package" href="pyGraph.Vgraph.html" />
+    <link rel="prev" title="pyGraph" href="modules.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pygraph-package">
+<h1>pyGraph package<a class="headerlink" href="#pygraph-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pyGraph.Vgraph.html">pyGraph.Vgraph package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyGraph.Vgraph.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGraph.Vgraph.html#pygraph-vgraph-director-module">pyGraph.Vgraph.director module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGraph.Vgraph.html#pygraph-vgraph-parking-module">pyGraph.Vgraph.parking module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGraph.Vgraph.html#pygraph-vgraph-recommend-module">pyGraph.Vgraph.recommend module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGraph.Vgraph.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pyGraph.nx.html">pyGraph.nx package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyGraph.nx.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGraph.nx.html#module-pyGraph.nx.utils">pyGraph.nx.utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGraph.nx.html#module-pyGraph.nx">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pyGraph.algorithms">
+<span id="pygraph-algorithms-module"></span><h2>pyGraph.algorithms module<a class="headerlink" href="#module-pyGraph.algorithms" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pyGraph.algorithms.BFSTraverse">
+<code class="descclassname">pyGraph.algorithms.</code><code class="descname">BFSTraverse</code><span class="sig-paren">(</span><em>graph</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms.BFSTraverse" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>para:</dt>
+<dd>graph:DataFrame, start:unicode(according to pandas)</dd>
+<dt>return:</dt>
+<dd>visited(list), path(list [(a,b),(b,c),,,]): real road, consecutive</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms.DFSTraverse">
+<code class="descclassname">pyGraph.algorithms.</code><code class="descname">DFSTraverse</code><span class="sig-paren">(</span><em>graph</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms.DFSTraverse" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>para:</dt>
+<dd>graph:DataFrame, start:unicode(according to pandas)</dd>
+<dt>return:</dt>
+<dd>visited(list), path(list [(a,b),(b,c),,,]): real road, consecutive</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms.DFSTraverse_path">
+<code class="descclassname">pyGraph.algorithms.</code><code class="descname">DFSTraverse_path</code><span class="sig-paren">(</span><em>graph</em>, <em>start</em>, <em>goal=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms.DFSTraverse_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>DFS with path as return value</p>
+<p>iterable.
+para:</p>
+<blockquote>
+<div>graph:DataFrame, start:unicode(according to pandas)</div></blockquote>
+<p><a class="reference external" href="https://github.com/israelst/Algorithms-Book--Python">https://github.com/israelst/Algorithms-Book&#8211;Python</a></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms.MST">
+<code class="descclassname">pyGraph.algorithms.</code><code class="descname">MST</code><span class="sig-paren">(</span><em>graph</em>, <em>method='prim_heap'</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms.MST" title="Permalink to this definition">¶</a></dt>
+<dd><p>using different algorithm to get MST</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms.dijkstra">
+<code class="descclassname">pyGraph.algorithms.</code><code class="descname">dijkstra</code><span class="sig-paren">(</span><em>graph</em>, <em>start=None</em>, <em>end=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms.dijkstra" title="Permalink to this definition">¶</a></dt>
+<dd><p>get 1 point to others points&#8217; shortest path
+time complexity O(n^2)
+para:</p>
+<blockquote>
+<div>DataFrame, str(unicode), str(unicode)</div></blockquote>
+<dl class="docutils">
+<dt>return:distance from start to every point; the path from start point to others</dt>
+<dd>dist = {
+pointName:[ distance = graph[start] (dataframe), isVisted = 0, path = [] ]
+}
+or
+distance:number, path:list []</dd>
+</dl>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>tutorial <a class="reference external" href="http://stackoverflow.com/questions/22897209/dijkstras-algorithm-in-python">http://stackoverflow.com/questions/22897209/dijkstras-algorithm-in-python</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><a class="reference external" href="http://www.cnblogs.com/biyeymyhjob/archive/2012/07/31/2615833.html">http://www.cnblogs.com/biyeymyhjob/archive/2012/07/31/2615833.html</a></td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms.floyd">
+<code class="descclassname">pyGraph.algorithms.</code><code class="descname">floyd</code><span class="sig-paren">(</span><em>graph</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms.floyd" title="Permalink to this definition">¶</a></dt>
+<dd><p>let all points&#8217; edges to simplified
+Floyd-Warshall algorithm O(n^3)</p>
+<p>graph: pd.dataframe</p>
+<p>result:pd.dataframe</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms.prim">
+<code class="descclassname">pyGraph.algorithms.</code><code class="descname">prim</code><span class="sig-paren">(</span><em>graph</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms.prim" title="Permalink to this definition">¶</a></dt>
+<dd><p>an algorithm for gengrate MST
+time complexity O(v^2)
+para
+&#8212;&#8211;
+2D array-like</p>
+<p>dis:list (distace)
+pre:list (path to that distance)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms.prim_heap">
+<code class="descclassname">pyGraph.algorithms.</code><code class="descname">prim_heap</code><span class="sig-paren">(</span><em>graph</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms.prim_heap" title="Permalink to this definition">¶</a></dt>
+<dd><p>O(v^2) for bad situation
+using heap to optimtiz algorithm
+para:</p>
+<blockquote>
+<div>dataframe</div></blockquote>
+<dl class="docutils">
+<dt>return: a list of MST</dt>
+<dd>list,[()]</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyGraph.algorithms_edgearr">
+<span id="pygraph-algorithms-edgearr-module"></span><h2>pyGraph.algorithms_edgearr module<a class="headerlink" href="#module-pyGraph.algorithms_edgearr" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pyGraph.algorithms_edgearr.BFSTraverse">
+<code class="descclassname">pyGraph.algorithms_edgearr.</code><code class="descname">BFSTraverse</code><span class="sig-paren">(</span><em>graph</em>, <em>start=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms_edgearr.BFSTraverse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms_edgearr.DFSTraverse">
+<code class="descclassname">pyGraph.algorithms_edgearr.</code><code class="descname">DFSTraverse</code><span class="sig-paren">(</span><em>graph</em>, <em>start=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms_edgearr.DFSTraverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>ALGraph,str/int</p>
+<p>list
+&gt;&gt;&gt; graph = {&#8216;A&#8217;: set([&#8216;B&#8217;, &#8216;C&#8217;]),
+&gt;&gt;&gt;  &#8216;B&#8217;: set([&#8216;A&#8217;, &#8216;D&#8217;, &#8216;E&#8217;]),
+&gt;&gt;&gt;  &#8216;C&#8217;: set([&#8216;A&#8217;, &#8216;F&#8217;]),
+&gt;&gt;&gt;  &#8216;D&#8217;: set([&#8216;B&#8217;]),
+&gt;&gt;&gt;  &#8216;E&#8217;: set([&#8216;B&#8217;, &#8216;F&#8217;]),
+&gt;&gt;&gt;  &#8216;F&#8217;: set([&#8216;C&#8217;, &#8216;E&#8217;])}</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/">http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/</a></td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms_edgearr.TopoSort">
+<code class="descclassname">pyGraph.algorithms_edgearr.</code><code class="descname">TopoSort</code><span class="sig-paren">(</span><em>DGlist</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms_edgearr.TopoSort" title="Permalink to this definition">¶</a></dt>
+<dd><p>can not act as a visitor to visit this nodes, to get circle path,
+because it has been confirmed: computer cannot judge the dead loop,
+by Turing</p>
+<p>result may different since the start point is not same every time
+para: sequent route, with directed; matrix</p>
+<blockquote>
+<div>list, dataframe</div></blockquote>
+<dl class="docutils">
+<dt>return: circle of route</dt>
+<dd>list</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms_edgearr.bellman_ford">
+<code class="descclassname">pyGraph.algorithms_edgearr.</code><code class="descname">bellman_ford</code><span class="sig-paren">(</span><em>graph</em>, <em>start=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms_edgearr.bellman_ford" title="Permalink to this definition">¶</a></dt>
+<dd><p>also work in negative weight 
+this is the advantage compired with dijkstra
+time complexity O(<a href="#id20"><span class="problematic" id="id21">|V|*|E|</span></a>)O(<a href="#id22"><span class="problematic" id="id23">|V|*|E|</span></a>)</p>
+<p>graph:ALGraph
+start_poi: unicode</p>
+<blockquote>
+<div>dict, dict</div></blockquote>
+<p>simple use:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">W</span> <span class="o">=</span> <span class="p">{</span>
+<span class="go">    s: {t:10, y:5},</span>
+<span class="go">    t: {x:1, y:2},</span>
+<span class="go">    x: {z:4},</span>
+<span class="go">    y: {t:3, x:9, z:2},</span>
+<span class="go">    z: {x:6, s:7}</span>
+<span class="go">    }</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="p">,</span> <span class="n">P</span> <span class="o">=</span> <span class="n">bellman_ford</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">[</span><span class="n">D</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">]]</span> <span class="c1"># [0, 2, 4, 7, -2]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">P</span> <span class="c1"># True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">[</span><span class="n">P</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">]]</span> <span class="o">==</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">]</span> <span class="c1"># True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms_edgearr.dijkstra">
+<code class="descclassname">pyGraph.algorithms_edgearr.</code><code class="descname">dijkstra</code><span class="sig-paren">(</span><em>graph</em>, <em>start=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms_edgearr.dijkstra" title="Permalink to this definition">¶</a></dt>
+<dd><p>get 1 point to others points&#8217; shortest path
+time complexity O(n^2)
+para:</p>
+<blockquote>
+<div>ALGraph, unicode(start point)</div></blockquote>
+<dl class="docutils">
+<dt>return:</dt>
+<dd>dict, dict</dd>
+</dl>
+<p>simple use</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">W</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">s</span><span class="p">:</span> <span class="p">{</span><span class="n">t</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="mi">5</span><span class="p">},</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">t</span><span class="p">:</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">x</span><span class="p">:</span> <span class="p">{</span><span class="n">z</span><span class="p">:</span><span class="mi">4</span><span class="p">},</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">y</span><span class="p">:</span> <span class="p">{</span><span class="n">t</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span><span class="mi">9</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">z</span><span class="p">:</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span><span class="mi">7</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="p">,</span> <span class="n">P</span> <span class="o">=</span> <span class="n">dijkstra</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">start</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">[</span><span class="n">D</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">]]</span> <span class="c1"># [0, 8, 9, 5, 7]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="n">s</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">P</span> <span class="c1"># True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">[</span><span class="n">P</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">]]</span> <span class="o">==</span> <span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="c1"># True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms_edgearr.floyd_warshall1">
+<code class="descclassname">pyGraph.algorithms_edgearr.</code><code class="descname">floyd_warshall1</code><span class="sig-paren">(</span><em>graph</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms_edgearr.floyd_warshall1" title="Permalink to this definition">¶</a></dt>
+<dd><p>solve all point&#8217;s shortest path
+O(<a href="#id4"><span class="problematic" id="id5">|</span></a>V|^3)
+get shortest path of all vertex</p>
+<p>graph: ALGraph</p>
+<blockquote>
+<div>dict{dict{}}</div></blockquote>
+<p>example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span> <span class="c1"># One-based</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">W</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">a</span><span class="p">:</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span><span class="mi">7</span><span class="p">},</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">b</span><span class="p">:</span> <span class="p">{</span><span class="n">a</span><span class="p">:</span><span class="mi">4</span><span class="p">},</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">c</span><span class="p">:</span> <span class="p">{</span><span class="n">b</span><span class="p">:</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">d</span><span class="p">:</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span><span class="mi">6</span><span class="p">},</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">e</span><span class="p">:</span> <span class="p">{</span><span class="n">a</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span><span class="o">-</span><span class="mi">4</span><span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="p">}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">W</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">W</span><span class="p">:</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">if</span> <span class="n">u</span> <span class="o">==</span> <span class="n">v</span><span class="p">:</span> <span class="n">W</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="gp">&gt;&gt;&gt; </span>        <span class="k">if</span> <span class="n">v</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">W</span><span class="p">[</span><span class="n">u</span><span class="p">]:</span> <span class="n">W</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">INF</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span> <span class="o">=</span> <span class="n">floyd_warshall1</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">[</span><span class="n">D</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">]]</span> <span class="c1"># [0, -4, 1, -1, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">[</span><span class="n">D</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">]]</span> <span class="c1"># [4, 0, 5, 3, 7]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">[</span><span class="n">D</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">]]</span> <span class="c1"># [-1, -5, 0, -2, 2]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">[</span><span class="n">D</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">]]</span> <span class="c1"># [5, 1, 6, 0, 8]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">[</span><span class="n">D</span><span class="p">[</span><span class="n">e</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">]]</span> <span class="c1"># [1, -3, 2, -4, 0]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms_edgearr.johnson">
+<code class="descclassname">pyGraph.algorithms_edgearr.</code><code class="descname">johnson</code><span class="sig-paren">(</span><em>graph</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms_edgearr.johnson" title="Permalink to this definition">¶</a></dt>
+<dd><p>johnson: combine Bellman-Ford with Dijkstra
+solve all point&#8217;s short path  in graph
+perform well in sparse graph
+time complexity : O(V * E * lg(V))</p>
+<p>graph:ALGraph</p>
+<p>dict{dict{}}, dict{dict{}}</p>
+<p>simple use:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">W</span> <span class="o">=</span> <span class="p">{</span>
+<span class="go">    a: {c:1, d:7},</span>
+<span class="go">    b: {a:4},</span>
+<span class="go">    c: {b:-5, e:2},</span>
+<span class="go">    d: {c:6},</span>
+<span class="go">    e: {a:3, b:8, d:-4}</span>
+<span class="go">    }</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">D</span><span class="p">,</span> <span class="n">P</span> <span class="o">=</span> <span class="n">johnson</span><span class="p">(</span><span class="n">W</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">[</span><span class="n">D</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">]]</span> <span class="c1"># [0, -4, 1, -1, 3]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">[</span><span class="n">D</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">]]</span> <span class="c1"># [4, 0, 5, 3, 7]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">[</span><span class="n">D</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">]]</span> <span class="c1"># [-1, -5, 0, -2, 2]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">[</span><span class="n">D</span><span class="p">[</span><span class="n">d</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">]]</span> <span class="c1"># [5, 1, 6, 0, 8]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span> <span class="p">[</span><span class="n">D</span><span class="p">[</span><span class="n">e</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">e</span><span class="p">]]</span> <span class="c1"># [1, -3, 2, -4, 0]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms_edgearr.kruskal">
+<code class="descclassname">pyGraph.algorithms_edgearr.</code><code class="descname">kruskal</code><span class="sig-paren">(</span><em>graph</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms_edgearr.kruskal" title="Permalink to this definition">¶</a></dt>
+<dd><p>an algorithm for gengrate MST
+time complexity O(E * log2 E)</p>
+<dl class="docutils">
+<dt>para:</dt>
+<dd>EdgesetArray</dd>
+<dt>return:</dt>
+<dd>set( {()} )</dd>
+</dl>
+<p>example return
+&gt;&gt;&gt; minimum_spanning_tree = set([</p>
+<blockquote>
+<div>(&#8216;A&#8217;, &#8216;B&#8217;, 1),
+(&#8216;B&#8217;, &#8216;D&#8217;, 2),
+(&#8216;C&#8217;, &#8216;D&#8217;, 1),
+])</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms_edgearr.kruskal_ALGraph">
+<code class="descclassname">pyGraph.algorithms_edgearr.</code><code class="descname">kruskal_ALGraph</code><span class="sig-paren">(</span><em>graph</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms_edgearr.kruskal_ALGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>an algorithm for gengrate MST
+time complexity O(E * log2 E)
+para:</p>
+<blockquote>
+<div>ALGraph</div></blockquote>
+<dl class="docutils">
+<dt>return:</dt>
+<dd>set</dd>
+</dl>
+<p>simple input:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">graph</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span><span class="mi">0</span><span class="p">:</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">4</span><span class="p">},</span>
+<span class="gp">... </span><span class="mi">1</span><span class="p">:</span> <span class="p">{</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">},</span>
+<span class="gp">... </span><span class="mi">2</span><span class="p">:</span> <span class="p">{</span><span class="mi">3</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
+<span class="gp">... </span><span class="mi">3</span><span class="p">:</span> <span class="nb">set</span><span class="p">()</span>
+<span class="gp">... </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>output:
+&gt;&gt;&gt; print list(kruskal_ALGraph(graph)) 
+... #[(0, 1), (2, 3), (0, 2)]</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms_edgearr.prim">
+<code class="descclassname">pyGraph.algorithms_edgearr.</code><code class="descname">prim</code><span class="sig-paren">(</span><em>graph</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms_edgearr.prim" title="Permalink to this definition">¶</a></dt>
+<dd><p>an algorithm for gengrate MST
+O(v^2)</p>
+<blockquote>
+<div>ALGraph</div></blockquote>
+<blockquote>
+<div>dict</div></blockquote>
+<p>simple input:</p>
+<p>&gt;&gt;&gt;graph = {
+... 0: {1:1, 2:3, 3:4},
+... 1: {0:1, 2:5},
+... 2: {0:3, 1:5, 3:2},
+... 3: {2:2, 0:4}
+... }</p>
+<p>simple output:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>&#8212;</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.algorithms_edgearr.relax">
+<code class="descclassname">pyGraph.algorithms_edgearr.</code><code class="descname">relax</code><span class="sig-paren">(</span><em>W</em>, <em>u</em>, <em>v</em>, <em>D</em>, <em>P</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms_edgearr.relax" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="http://python.jobbole.com/81467/">http://python.jobbole.com/81467/</a></td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="pygraph-main-module">
+<h2>pyGraph.main module<a class="headerlink" href="#pygraph-main-module" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-pyGraph.models">
+<span id="pygraph-models-module"></span><h2>pyGraph.models module<a class="headerlink" href="#module-pyGraph.models" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pyGraph.models.ALGraph">
+<em class="property">class </em><code class="descclassname">pyGraph.models.</code><code class="descname">ALGraph</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.ALGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">_abcoll.Mapping</span></code></p>
+<p>same operation as dict</p>
+<p><a href="#id7"><span class="problematic" id="id8">``</span></a>`
+&gt;&gt;&gt; graph = {&#8216;A&#8217;: {&#8216;B&#8217;:1, &#8216;C&#8217;:2},</p>
+<blockquote>
+<div>&#8216;B&#8217;: {&#8216;A&#8217;:1, &#8216;D&#8217;:2, &#8216;E&#8217;:3},
+...}</div></blockquote>
+<p><a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a></p>
+<table class="docutils footnote" frame="void" id="id13" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/">http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/</a></td></tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="pyGraph.models.ALGraph.add_nodes">
+<code class="descname">add_nodes</code><span class="sig-paren">(</span><em>vnode</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.ALGraph.add_nodes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.ALGraph.is_ALGraph">
+<code class="descname">is_ALGraph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.ALGraph.is_ALGraph" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.ALGraph.pop">
+<code class="descname">pop</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.ALGraph.pop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.ALGraph.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.ALGraph.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pyGraph.models.VNode">
+<em class="property">class </em><code class="descclassname">pyGraph.models.</code><code class="descname">VNode</code><span class="sig-paren">(</span><em>name=''</em>, <em>nextArcNode={}</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.VNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>point of view</p>
+<dl class="method">
+<dt id="pyGraph.models.VNode.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.VNode.get_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.VNode.set_name">
+<code class="descname">set_name</code><span class="sig-paren">(</span><em>newname</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.VNode.set_name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pyGraph.models.ArcNode">
+<em class="property">class </em><code class="descclassname">pyGraph.models.</code><code class="descname">ArcNode</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.ArcNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pyGraph.models.ALGraph" title="pyGraph.models.ALGraph"><code class="xref py py-class docutils literal"><span class="pre">pyGraph.models.ALGraph</span></code></a></p>
+<p>road</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pyGraph.models.EdgesetArray">
+<em class="property">class </em><code class="descclassname">pyGraph.models.</code><code class="descname">EdgesetArray</code><span class="sig-paren">(</span><em>v=[]</em>, <em>e=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>compaired with .csv file,  it added the list of vertex
+also indegree recoding
+for both digraph and undirected graph;</p>
+<blockquote>
+<div>vertex(_v): pd.dataframe 
+edge(_e): pd.dataframe</div></blockquote>
+<table class="docutils footnote" frame="void" id="id14" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td>www.cnblogs.com/smallcrystal/p/5809864.html</td></tr>
+</tbody>
+</table>
+<p>optimize
+.. [1] <a class="reference external" href="http://www.kr41.net/2016/03-23-dont_inherit_python_builtin_dict_type.html">http://www.kr41.net/2016/03-23-dont_inherit_python_builtin_dict_type.html</a>
+.. [2] <a class="reference external" href="http://stackoverflow.com/questions/3387691/python-how-to-perfectly-override-a-dict">http://stackoverflow.com/questions/3387691/python-how-to-perfectly-override-a-dict</a>
+.. [3] <a class="reference external" href="http://stackoverflow.com/questions/2390827/how-to-properly-subclass-dict-and-override-getitem-setitem">http://stackoverflow.com/questions/2390827/how-to-properly-subclass-dict-and-override-getitem-setitem</a></p>
+<dl class="method">
+<dt id="pyGraph.models.EdgesetArray.add_edge">
+<code class="descname">add_edge</code><span class="sig-paren">(</span><em>start</em>, <em>end</em>, <em>weight</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.add_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>add 1 row each time
+then update the indegree list</p>
+<p>start: unicode
+unicode: int</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.EdgesetArray.del_edge">
+<code class="descname">del_edge</code><span class="sig-paren">(</span><em>start=None</em>, <em>end=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.del_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>better to use keyword delete 1 edge</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.EdgesetArray.del_vertex">
+<code class="descname">del_vertex</code><span class="sig-paren">(</span><em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.del_vertex" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>para: name of vertex</dt>
+<dd>unicode</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyGraph.models.EdgesetArray.edge">
+<code class="descname">edge</code><a class="headerlink" href="#pyGraph.models.EdgesetArray.edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>check if &#8220;start&#8221; column and &#8220;end&#8221; column can meet the parameter
+para:</p>
+<blockquote>
+<div>unicode, unicode</div></blockquote>
+<dl class="docutils">
+<dt>return:</dt>
+<dd>pd.dataframe</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.EdgesetArray.get_all_edges">
+<code class="descname">get_all_edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.get_all_edges" title="Permalink to this definition">¶</a></dt>
+<dd><p>return dataframe</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.EdgesetArray.get_all_vertexes">
+<code class="descname">get_all_vertexes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.get_all_vertexes" title="Permalink to this definition">¶</a></dt>
+<dd><p>return list</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.EdgesetArray.get_edge">
+<code class="descname">get_edge</code><span class="sig-paren">(</span><em>start_poi</em>, <em>end_poi</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.get_edge" title="Permalink to this definition">¶</a></dt>
+<dd><p>check if &#8220;start&#8221; column and &#8220;end&#8221; column can meet the parameter
+para:</p>
+<blockquote>
+<div>unicode, unicode</div></blockquote>
+<dl class="docutils">
+<dt>return:</dt>
+<dd>pd.dataframe</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.EdgesetArray.get_indegrees">
+<code class="descname">get_indegrees</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.get_indegrees" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>return:</dt>
+<dd>dict{name:indegree}</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.EdgesetArray.get_vertex">
+<code class="descname">get_vertex</code><span class="sig-paren">(</span><em>vertexid</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.get_vertex" title="Permalink to this definition">¶</a></dt>
+<dd><p>vertexid: unicode (also int)</p>
+<table class="docutils footnote" frame="void" id="id15" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="http://blog.chinaunix.net/xmlrpc.php?r=blog/article&amp;uid=23100982&amp;id=3540311">http://blog.chinaunix.net/xmlrpc.php?r=blog/article&amp;uid=23100982&amp;id=3540311</a></td></tr>
+</tbody>
+</table>
+<p>index canbe anytype, both int and unicode -&gt; vertexid</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.EdgesetArray.is_EdgesetArray">
+<code class="descname">is_EdgesetArray</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.is_EdgesetArray" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.EdgesetArray.load_csv">
+<code class="descname">load_csv</code><span class="sig-paren">(</span><em>file_path='data/graph.csv'</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.load_csv" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>self</div></blockquote>
+<p>(do not forget use = instead of singal instruct)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.EdgesetArray.route_to_edgeSetArray">
+<code class="descname">route_to_edgeSetArray</code><span class="sig-paren">(</span><em>route_list</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.route_to_edgeSetArray" title="Permalink to this definition">¶</a></dt>
+<dd><p>change self, from a point chain to a edges set
+para:</p>
+<blockquote>
+<div>route_list: (unicode) list</div></blockquote>
+<dl class="docutils">
+<dt>return:</dt>
+<dd>Edgesetarray</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.EdgesetArray.set_edge">
+<code class="descname">set_edge</code><span class="sig-paren">(</span><em>index</em>, <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.set_edge" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>para:</dt>
+<dd>index of the edge</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.EdgesetArray.set_vertex">
+<code class="descname">set_vertex</code><span class="sig-paren">(</span><em>vertexid</em>, <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.set_vertex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.EdgesetArray.sort_weight">
+<code class="descname">sort_weight</code><span class="sig-paren">(</span><em>columns=None</em>, <em>ascending=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.sort_weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>get sorted matrix, update self</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyGraph.models.EdgesetArray.update_indegree">
+<code class="descname">update_indegree</code><span class="sig-paren">(</span><em>end_poi</em>, <em>operation=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.update_indegree" title="Permalink to this definition">¶</a></dt>
+<dd><p>helper func
+for every time add a edge, +1 indegree
+del an edge, -1</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pyGraph.models.EdgesetArray.vertex">
+<code class="descname">vertex</code><a class="headerlink" href="#pyGraph.models.EdgesetArray.vertex" title="Permalink to this definition">¶</a></dt>
+<dd><p>vertexid: unicode (also int)</p>
+<table class="docutils footnote" frame="void" id="id16" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="http://blog.chinaunix.net/xmlrpc.php?r=blog/article&amp;uid=23100982&amp;id=3540311">http://blog.chinaunix.net/xmlrpc.php?r=blog/article&amp;uid=23100982&amp;id=3540311</a></td></tr>
+</tbody>
+</table>
+<p>index canbe anytype, both int and unicode -&gt; vertexid</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyGraph.utils">
+<span id="pygraph-utils-module"></span><h2>pyGraph.utils module<a class="headerlink" href="#module-pyGraph.utils" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pyGraph.utils.ALGraph_to_martix">
+<code class="descclassname">pyGraph.utils.</code><code class="descname">ALGraph_to_martix</code><span class="sig-paren">(</span><em>alg</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.ALGraph_to_martix" title="Permalink to this definition">¶</a></dt>
+<dd><p>alg:ALGraph</p>
+<p>result:DataFrame</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.utils.LocateVex">
+<code class="descclassname">pyGraph.utils.</code><code class="descname">LocateVex</code><span class="sig-paren">(</span><em>adjacency_matrix</em>, <em>current_poi</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.LocateVex" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>para:</dt>
+<dd>DataFrame, unicode</dd>
+<dt>return: name(s) of adjacency point of current_poi</dt>
+<dd>DataFrame</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="pyGraph.utils.MyEncoder">
+<em class="property">class </em><code class="descclassname">pyGraph.utils.</code><code class="descname">MyEncoder</code><span class="sig-paren">(</span><em>skipkeys=False</em>, <em>ensure_ascii=True</em>, <em>check_circular=True</em>, <em>allow_nan=True</em>, <em>sort_keys=False</em>, <em>indent=None</em>, <em>separators=None</em>, <em>encoding='utf-8'</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.MyEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">json.encoder.JSONEncoder</span></code></p>
+<p>using JSON to save graph data
+#TODO</p>
+<dl class="method">
+<dt id="pyGraph.utils.MyEncoder.default">
+<code class="descname">default</code><span class="sig-paren">(</span><em>obj</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.MyEncoder.default" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.utils.add_dict">
+<code class="descclassname">pyGraph.utils.</code><code class="descname">add_dict</code><span class="sig-paren">(</span><em>thedict</em>, <em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.add_dict" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.utils.create_matrix">
+<code class="descclassname">pyGraph.utils.</code><code class="descname">create_matrix</code><span class="sig-paren">(</span><em>df_index</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.create_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>para:index(view name here) of all</dt>
+<dd>array-like</dd>
+<dt>return:</dt>
+<dd>dataframe</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.utils.debug_print">
+<code class="descclassname">pyGraph.utils.</code><code class="descname">debug_print</code><span class="sig-paren">(</span><em>object</em>, <em>debug=True</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.debug_print" title="Permalink to this definition">¶</a></dt>
+<dd><p>control by global variable
+debug = PRINT_DEBUG</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.utils.enhance_method">
+<code class="descclassname">pyGraph.utils.</code><code class="descname">enhance_method</code><span class="sig-paren">(</span><em>target_class</em>, <em>method_name</em>, <em>replacement</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.enhance_method" title="Permalink to this definition">¶</a></dt>
+<dd><p>replace exist methods
+if u want to change a function in class, using it</p>
+<p>target_class: str(class name)
+method_name: str
+replacement: pointer to function</p>
+<table class="docutils footnote" frame="void" id="id17" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="http://outofmemory.cn/code-snippet/2856/python-dongtai-modify-class-method-execution-logical">http://outofmemory.cn/code-snippet/2856/python-dongtai-modify-class-method-execution-logical</a></td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.utils.get_total_dist">
+<code class="descclassname">pyGraph.utils.</code><code class="descname">get_total_dist</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.get_total_dist" title="Permalink to this definition">¶</a></dt>
+<dd><p>deco func: get_total_distance of the list, from a martix
+for those funcs who get df as input and list as output</p>
+<p>origin_return, distance:int</p>
+<table class="docutils footnote" frame="void" id="id18" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="http://stackoverflow.com/questions/10724854/how-to-do-a-conditional-decorator-in-python-2-6">http://stackoverflow.com/questions/10724854/how-to-do-a-conditional-decorator-in-python-2-6</a></td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.utils.graph_type">
+<code class="descclassname">pyGraph.utils.</code><code class="descname">graph_type</code><span class="sig-paren">(</span><em>graph</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.graph_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.utils.load_csv_to_models">
+<code class="descclassname">pyGraph.utils.</code><code class="descname">load_csv_to_models</code><span class="sig-paren">(</span><em>file_path='data/graph.csv'</em>, <em>start_position=0</em>, <em>end_position=1</em>, <em>weight_positon=2</em>, <em>vnode='models.VNode'</em>, <em>arcnode='models.ArcNode'</em>, <em>algraph='models.ALGraph'</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.load_csv_to_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>load csv file, with: start, end, weight; format
+to VNode, ArcNode, ALGraph</p>
+<p>for loop:read the csv 2 times
+because it is undirected graph</p>
+<blockquote>
+<div><p>file_path(absoult or not):str
+vnode:str(class name, for creating class dynamic)
+arcnode:str
+algraph:str
+start_position:int
+end_position:int
+weight_positon:int</p>
+<blockquote>
+<div>the positon in csv file
+A,B,1 means from A to B, weight is 1</div></blockquote>
+</div></blockquote>
+<blockquote>
+<div>algraph: (models.ALGraph by default)</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.utils.load_graph">
+<code class="descclassname">pyGraph.utils.</code><code class="descname">load_graph</code><span class="sig-paren">(</span><em>file_path='data/graph.csv'</em>, <em>start_position=0</em>, <em>end_position=1</em>, <em>weight_positon=2</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.load_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>do convert from table to matrix without models
+start_position:int
+end_position:int
+weight_positon:int</p>
+<blockquote>
+<div>the positon in csv file
+A,B,1 means from A to B, weight is 1</div></blockquote>
+<dl class="docutils">
+<dt>return:</dt>
+<dd>DataFrame</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.utils.not_implemented_for">
+<code class="descclassname">pyGraph.utils.</code><code class="descname">not_implemented_for</code><span class="sig-paren">(</span><em>*graph_types</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.not_implemented_for" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decorator to mark algorithms as not implemented
+Parameters
+&#8212;&#8212;&#8212;-
+graph_types : container of strings</p>
+<blockquote>
+<div>Entries must be one of &#8216;directed&#8217;,&#8217;undirected&#8217;, &#8216;multigraph&#8217;, &#8216;graph&#8217;.</div></blockquote>
+<dl class="docutils">
+<dt>_require <span class="classifier-delimiter">:</span> <span class="classifier">function</span></dt>
+<dd>The decorated function.</dd>
+</dl>
+<p>KeyError
+Notes
+&#8212;&#8211;
+Multiple types are joined logically with &#8220;and&#8221;.
+For &#8220;or&#8221; use multiple &#64;not_implemented_for() lines.
+Examples
+&#8212;&#8212;&#8211;
+Decorate functions like this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="nd">@not_implemnted_for</span><span class="p">(</span><span class="s1">&#39;directed&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">sp_function</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="k">pass</span>
+<span class="nd">@not_implemnted_for</span><span class="p">(</span><span class="s1">&#39;directed&#39;</span><span class="p">,</span><span class="s1">&#39;multigraph&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">sp_np_function</span><span class="p">(</span><span class="n">G</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<table class="docutils footnote" frame="void" id="id19" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="https://github.com/networkx/networkx/blob/6e20b952a957af820990f68d9237609198088816/networkx/utils/decorators.py#L16">https://github.com/networkx/networkx/blob/6e20b952a957af820990f68d9237609198088816/networkx/utils/decorators.py#L16</a></td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.utils.readFile">
+<code class="descclassname">pyGraph.utils.</code><code class="descname">readFile</code><span class="sig-paren">(</span><em>file_path='data/graph.csv'</em>, <em>encoding='utf-8'</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.readFile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.utils.writeFile">
+<code class="descclassname">pyGraph.utils.</code><code class="descname">writeFile</code><span class="sig-paren">(</span><em>file_path='data/graph.csv'</em>, <em>u=None</em>, <em>encoding='utf-8'</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.writeFile" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-pyGraph"></span></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pyGraph package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-pyGraph.algorithms">pyGraph.algorithms module</a></li>
+<li><a class="reference internal" href="#module-pyGraph.algorithms_edgearr">pyGraph.algorithms_edgearr module</a></li>
+<li><a class="reference internal" href="#pygraph-main-module">pyGraph.main module</a></li>
+<li><a class="reference internal" href="#module-pyGraph.models">pyGraph.models module</a></li>
+<li><a class="reference internal" href="#module-pyGraph.utils">pyGraph.utils module</a></li>
+<li><a class="reference internal" href="#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">pyGraph</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">pyGraph</a></li>
+      <li>Next: <a href="pyGraph.Vgraph.html" title="next chapter">pyGraph.Vgraph package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pyGraph.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, neusc@foxmail.com.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/pyGraph.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
