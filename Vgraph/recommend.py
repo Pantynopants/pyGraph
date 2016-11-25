@@ -40,12 +40,12 @@ def start(file_path):
         if line.strip() == "0":
             break
         
-        if line.strip() == "1":
+        elif line.strip() == "1":
             for k,v in sort_score(temp[0]):
                 print(k),
                 print(v)
 
-        if line.strip() == "2":
+        elif line.strip() == "2":
             start_point = raw_input("enter spots name you wanna visit")
             try:
                 user_input = unicode(start_point.strip(), "GB2312")
@@ -67,6 +67,7 @@ def start(file_path):
 
             print(user_input, type(user_input))
             nxutil.show(g, node_list = [str(user_input).encode("utf-8").decode("utf-8")])
+        else:continue
     
 
 def add_comment(old_method, self, *args, **kwds):
@@ -75,7 +76,7 @@ def add_comment(old_method, self, *args, **kwds):
 
     """
     # print '*** calling: %s%s, kwds=%s' % (old_method.__name__, args, kwds)
-    return_value = old_method(self, *args, **kwds) # call the original method
+    return_value = old_method(self, *args, **kwds)                  # call the original method
     v_number = return_value.get_all_vertexes()
     comment = {
         k:str(k).encode("utf-8").decode("utf-8")  + " is a good place"         # comment
@@ -85,7 +86,7 @@ def add_comment(old_method, self, *args, **kwds):
         k: 5*random.uniform(0, 1) 
         for k in v_number
     }
-    return (score, comment) # as the return value of load_csv
+    return (score, comment)                                 # as the return value of load_csv
 
 def sort_score(score):
     """

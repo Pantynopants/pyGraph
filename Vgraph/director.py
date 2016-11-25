@@ -24,7 +24,7 @@ def input_TourSortGraph():
         
         if line.strip() == "-1":
             break
-        data = line.split(',')
+        data = line.strip().split(',')
         if len(data) != 3:
             print("wrong input, plz try again")
             continue
@@ -38,7 +38,7 @@ def input_TourSortGraph():
         # elif chardet.detect(i)['encoding'] == 'ascii':
         #     temp = unicode(i, "ascii")
         temp = unicode(i, chardet.detect(i)['encoding'])
-        print type(temp)
+        # print type(temp)
         # print(chardet.detect(temp))
         fobj.write(temp.strip())
         fobj.write(ls)

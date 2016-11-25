@@ -220,7 +220,7 @@ class EdgesetArray(object):
         while indexs:   
             self.del_edge(self._e.loc[indexs[0], u"start"], name)
             del_poi_as_end = self._e[ self._e[u"end"] == name]
-            indexs = [i for i in del_poi_as_end.index]       
+            indexs = [i for i in del_poi_as_end.index]
 
         # self._e = self._e.drop( self._e[ self._e.loc[u"start"].isin(point_name)].index )
         # self._e = self._e.drop( self._e[ self._e.loc[u"end"].isin(point_name)].index )

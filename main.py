@@ -155,7 +155,7 @@ def start():
         
 
         if line.strip() == "1":
-            file_path = raw_input("enter file name, 0 for a new csv file to store your graph\n")
+            file_path = raw_input("enter file name, 0 for creating a new csv file to store your graph\n")
             
             if file_path.strip() == "0":
                 director.input_TourSortGraph()      #create csv file
@@ -168,7 +168,7 @@ def start():
                         start_position = 1, end_position = 2, weight_positon = 3)
                     g = nxutil.load_csv_nx(file_path = 'data/' + file_path.strip())
                 except:
-                    print("no that file")
+                    print("file do not exist, try again")
                     continue
                 
 
@@ -181,8 +181,9 @@ def start():
                 else:
                     g = nxutil.load_csv_nx()
             nxutil.show(g)
+
         elif line.strip() == "3":
-            path, distance = director.CreatTourSortGraph(temp) 
+            path, distance = director.CreatTourSortGraph(temp)
             print("#"*40)
             for i in path:
                 print(i)
@@ -195,6 +196,7 @@ def start():
                 else:
                     g = nxutil.load_csv_nx()
             nxutil.show(g)
+
         elif line.strip() == "4":
             if path == None:
                 print("plz show Tour guide Graph first, now input 3")
@@ -212,7 +214,7 @@ def start():
                 end = unicode(poi.strip().split("|")[1], "GB2312")
                 
             else:
-                print(len(poi.strip().split("|")))
+                # print(len(poi.strip().split("|")))
                 print(u"wrong format! use default instead: start from 北门, end in 碧水亭")
                 start = u'北门'
                 end = u'碧水亭'
@@ -221,11 +223,14 @@ def start():
             if (type(temp.columns.values[0]) != unicode):
                 start = int(start)
                 end = int(end)
-            print type(end)
+            # print type(end)
             dist, shortest_path = algorithms.dijkstra(temp,  
                     start = start, 
                     end = end
                     )
+            if shortest_path == None:
+                print("point do not exsit")
+                continue
             shortest_path.insert(0, start)
             shortest_path.append(end)
             for x in shortest_path:
@@ -241,15 +246,13 @@ def start():
                 print(e[0]),
                 print(" --> "),
                 print(e[1])
-            print(u"total length:")  
+            print(u"total length:")
             print(distance)
             if g == None:
                 g = nxutil.load_csv_nx()
             nxutil.show(g, path_list = dis_list)
 
-        elif line.strip() == "7":
-            
-            
+        elif line.strip() == "7":                       
             recommend.start(file_path = file_path)
             
         elif line.strip() == "8":

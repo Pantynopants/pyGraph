@@ -83,7 +83,7 @@ def show(G, path_list = None, node_list = None):
                         str(path_list[i+1]).encode("utf-8").decode("utf-8"))   # [()]
                 for i in range(len(path_list) - 1)
             ]
-            print("change")
+            # print("change")
         else:
             esmall = [ (str(u).encode("utf-8").decode("utf-8"), 
                         str(v).encode("utf-8").decode("utf-8"))   # [()]
@@ -91,8 +91,8 @@ def show(G, path_list = None, node_list = None):
             ]
 
     pos = nx.spring_layout(G) # positions for all nodes
-    print(pos.keys()[0])
-    print(type(pos.keys()[0]))
+    # print(pos.keys()[0])
+    # print(type(pos.keys()[0]))
     # nodes
     nx.draw_networkx_nodes(G,pos,node_size = 500)
     if node_list != None:

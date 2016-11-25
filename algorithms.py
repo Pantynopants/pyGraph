@@ -37,7 +37,11 @@ def dijkstra(graph, start = None, end = None):
     # dist = {
     #   pointName:( distance = graph[start] (dataframe), isVisted = 0, path = [] )
     # }
-    if start == None:
+    # print(graph.columns.values)
+    if (start not in graph.columns.values) or (end not in graph.columns.values):
+        print("wrong input: plz input a start point exist in current graph")
+        return None, None
+    if start == None :
         print("wrong input: plz input a start point. use random by default")
         start = graph.columns.values[0]
     dis = zip(graph[start].index, graph[start])
@@ -119,7 +123,7 @@ def MST(graph, method = "prim_heap"):
 @utils.get_total_dist
 def prim_heap(graph): 
     r"""
-    O(v^2) for bad situation
+    time complexity O(E * log2 E)
     using heap to optimtiz algorithm
     para:
         dataframe

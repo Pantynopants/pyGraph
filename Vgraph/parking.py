@@ -14,22 +14,25 @@ def start():
     print("that means the car leave(0, enter by 1), number is 123123, time is 20:30")
     print("using space to split")
     while True:       
-        line = raw_input("enter sth, -1 to exist")
+        line = raw_input("enter sth, separate by space ' ', -1 to exist")
         if line.strip() == "-1":
             break
         print("carpark and waitfield")
         print(carpark)
         print(wait_field)
         for i in list(outside_road.queue): print(i)
-
-        data = line.split()
+        try:
+            data = line.split()
+        except :
+            print("wrong input! plz try again")
+            continue
+        
         if len(data) != 3:
             print("wrong input, plz try again")
             update()
             continue
-        
-     
-        print(data)
+             
+        # print(data)
         if int(data[0]) == 0:
             print("withdraw")
             withdraw(data[1], data[2])

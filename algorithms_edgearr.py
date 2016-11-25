@@ -255,21 +255,18 @@ def bellman_ford(graph, start = None):
     """
     if start == None:
         start = graph.keys()[0]
-    D, P = {start:0}, {}                           
+    distance, path = {start:0}, {}                           
     for rnd in graph: 
-
         changed = False                        
         for from_node in graph: 
-
             for to_node in graph[from_node]: 
-
-                if relax(graph, from_node, to_node, D, P): 
+                if relax(graph, from_node, to_node, distance, path): 
 
                     changed = True              
         if not changed: break                 
     else:                                     
         raise ValueError('negative cycle')  
-    return D, P  
+    return distance, path  
 
 @utils.not_implemented_for('DataFrame')
 @utils.not_implemented_for('EdgesetArray')
@@ -299,18 +296,17 @@ def dijkstra(graph, start = None):
     """
     if start == None:
         start = graph.keys()[0]
-    D, P, Q, S = {start:0}, {}, [(0,start)], set()   
+    distance, path, Q, S = {start:0}, {}, [(0,start)], set()   
     while Q:                                 
         _, u = heappop(Q)                       # Node with lowest estimate
         if u in S: continue                     # Already visited
         S.add(u)     
         if u not in graph:
             continue                     # visited it
-        for v in graph[u]: 
-                                     # Go through all its neighbors
-            relax(graph, u, v, D, P)                # Relax the out-edge
-            heappush(Q, (D[v], v))             
-    return D, P 
+        for v in graph[u]:                             # Go through all its neighbors
+            relax(graph, u, v, distance, path)                # Relax the out-edge
+            heappush(Q, (distance[v], v))             
+    return distance, path 
 
 @utils.not_implemented_for('DataFrame')
 @utils.not_implemented_for('EdgesetArray')
@@ -357,12 +353,12 @@ def johnson(graph):
     for u in graph:                                 # The weigraphht from u...
         for v in graph[u]:                          # from u to v...
             graph[u][v] += h[u] - h[v]        
-    D, P = {}, {}                             
+    distance, path = {}, {}                             
     for u in graph:                           
-        D[u], P[u] = dijkstra(graph, u)             # ... find the shortest paths
-        for v in graph:                             # For each destination...
-            D[u][v] += h[v] - h[u]              # ... readjust the distance
-    return D, P  
+        distance[u], path[u] = dijkstra(graph, u)             # ... find the shortest paths
+        for v in graph:                             
+            distance[u][v] += h[v] - h[u]                  # ... readjust the distance
+    return distance, path  
 
 @utils.not_implemented_for('DataFrame')
 @utils.not_implemented_for('EdgesetArray')
