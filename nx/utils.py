@@ -6,12 +6,25 @@ from pylab import *
 
 __all__ = ['load_csv_nx', 'create_nxgraph_from', 'show']
 
+######### for chinese show in matplotlib.pyplot #########
+
 mpl.rcParams['font.sans-serif'] = ['SimHei'] # default font type 
   
 mpl.rcParams['axes.unicode_minus'] = False 
 
 def load_csv_nx(file_path = 'data/graph.csv', start_position = 0, end_position = 1, weight_positon = 2):
-    """
+    """load csv file to networkx.Graph
+    para
+    -----
+    file_path:str
+    start_position:int
+    end_position:int
+    weight_positon:int
+        the positon in csv file
+        A,B,1 means from A to B, weight is 1
+    return
+    ---------
+    networkx.Graph
     """
     G = nx.Graph()
     # with open(file_path) as f:
@@ -40,6 +53,15 @@ def create_nxgraph_from(path_list):
 
 def show(G, path_list = None, node_list = None):
     """
+    para
+    -----
+    G:networkx.Graph
+    path_list:list
+        all units are unicode
+        [A,B,C,,,]  means from A to B toC
+    node_list:list
+        all units are unicode
+        [A,B,C,,,] means point A B and C
     exapmle
     >>> nxutil.show(g, node_list = circle_path)
     >>> nxutil.show(g, path_list = path)
@@ -57,18 +79,24 @@ def show(G, path_list = None, node_list = None):
     else:
         elarge = [(u,v) for (u,v,d) in G.edges(data=True)]
         if type(path_list[0]) != tuple:
-            esmall = [ (path_list[i], path_list[i+1])   # [()]
+            esmall = [ (str(path_list[i]).encode("utf-8").decode("utf-8"), 
+                        str(path_list[i+1]).encode("utf-8").decode("utf-8"))   # [()]
                 for i in range(len(path_list) - 1)
             ]
+            print("change")
         else:
-            esmall = path_list
+            esmall = [ (str(u).encode("utf-8").decode("utf-8"), 
+                        str(v).encode("utf-8").decode("utf-8"))   # [()]
+                for u,v in path_list
+            ]
 
     pos = nx.spring_layout(G) # positions for all nodes
-
+    print(pos.keys()[0])
+    print(type(pos.keys()[0]))
     # nodes
     nx.draw_networkx_nodes(G,pos,node_size = 500)
     if node_list != None:
-        nx.draw_networkx_nodes(G,pos,nodelist = node_list, node_color = 'b', node_size = 600)
+        nx.draw_networkx_nodes(G, pos, nodelist = [val for val in node_list if val in G.nodes()], node_color = 'b', node_size = 600)
 
     # edges
     nx.draw_networkx_edges(G,pos,edgelist = elarge,alpha = 0.5,

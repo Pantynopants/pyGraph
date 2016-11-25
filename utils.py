@@ -39,6 +39,9 @@ def add_dict(thedict, *args):
         
 
 def debug_print(object, debug = PRINT_DEBUG):
+    """control by global variable
+    debug = PRINT_DEBUG
+    """
     if debug == True:
         print(object)
 
@@ -48,6 +51,7 @@ def debug_print(object, debug = PRINT_DEBUG):
 def enhance_method(target_class, method_name, replacement):
     """
     replace exist methods
+    if u want to change a function in class, using it
 
     para
     -----
@@ -81,20 +85,24 @@ def load_graph(file_path = 'data/graph.csv',
     start_position = 0, end_position = 1, weight_positon = 2):
     """
     do convert from table to matrix without models
+    start_position:int
+    end_position:int
+    weight_positon:int
+        the positon in csv file
+        A,B,1 means from A to B, weight is 1
     return:
         DataFrame
     """
     df = pd.read_csv(file_path, encoding='utf8', skiprows=0)
     start = list(df['start'])
     end = list(df['end'])
-    # print len(start+end)
     point_dict = { i:0
     for i in start+end
     }
     points_list = point_dict.keys()
-    # print len(point_dict.keys())
+
     df_matrix = df.as_matrix()
-    # print(result)
+
     result = create_matrix(points_list)
     for i in df_matrix:
         result.set_value(i[start_position], i[end_position], i[weight_positon])
@@ -119,7 +127,11 @@ def load_csv_to_models(file_path = 'data/graph.csv',
         vnode:str(class name, for creating class dynamic)
         arcnode:str
         algraph:str
-
+        start_position:int
+        end_position:int
+        weight_positon:int
+            the positon in csv file
+            A,B,1 means from A to B, weight is 1
     return
     -------
         algraph: (models.ALGraph by default)
@@ -150,6 +162,15 @@ def load_csv_to_models(file_path = 'data/graph.csv',
 
 
 def ALGraph_to_martix(alg):
+    """
+    para
+    ------
+    alg:ALGraph
+
+    return
+    ------
+    result:DataFrame
+    """
     points_list = set([i for i in alg.keys()] + [k for j in alg.values() for k in j.keys()])
 
     result = pd.DataFrame(INF*np.ones( (len(points_list), len(points_list) ) ), index = points_list, columns = points_list)
@@ -275,6 +296,9 @@ def not_implemented_for(*graph_types):
 
 
 class MyEncoder(json.JSONEncoder):
+    """using JSON to save graph data
+    #TODO
+    """
     def default(self, obj):
         if (not isinstance(obj, ALGraph) or not isinstance(obj, models.ArcNode)):
             return super(MyEncoder, self).default(obj)

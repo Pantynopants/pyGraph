@@ -142,19 +142,19 @@ def prim(graph):
         dict
 
     simple input:
-    ```
+    
     >>>graph = {
     ... 0: {1:1, 2:3, 3:4},
     ... 1: {0:1, 2:5},
     ... 2: {0:3, 1:5, 3:2},
     ... 3: {2:2, 0:4}
     ... }
-    ```
+    
 
     simple output:
-    ```
-    {0: None, 1: 0, 2: 0, 3: 2}
-    ```
+    
+    >>> {0: None, 1: 0, 2: 0, 3: 2}
+    
     ---
     """
     start = graph.keys()[0]
@@ -184,17 +184,17 @@ def kruskal_ALGraph(graph):
         set
 
     simple input:
-    ```
+    
     >>> graph = {
     ... 0: {1:1, 2:3, 3:4},
     ... 1: {2:5},
     ... 2: {3:2},
     ... 3: set()
     ... }
-    ```
+    
     output:
-    `>>> print list(kruskal_ALGraph(graph)) `
-    `#[(0, 1), (2, 3), (0, 2)]    `
+    >>> print list(kruskal_ALGraph(graph)) 
+    ... #[(0, 1), (2, 3), (0, 2)]   
     """
     def find(parent, u):
         if parent[u] != u:
@@ -238,7 +238,7 @@ def bellman_ford(graph, start = None):
         dict, dict
 
     simple use:
-    ```
+    
     >>> s, t, x, y, z = range(5)
     >>> W = {
         s: {t:10, y:5},
@@ -251,7 +251,7 @@ def bellman_ford(graph, start = None):
     >>> print [D[v] for v in [s, t, x, y, z]] # [0, 2, 4, 7, -2]
     >>> print s not in P # True
     >>> print [P[v] for v in [t, x, y, z]] == [x, y, s, t] # True
-    ```
+    
     """
     if start == None:
         start = graph.keys()[0]
@@ -282,7 +282,7 @@ def dijkstra(graph, start = None):
         dict, dict
 
     simple use
-    ```
+    
     >>> s, t, x, y, z = range(5)
     >>> W = {
     >>>     s: {t:10, y:5},
@@ -295,7 +295,7 @@ def dijkstra(graph, start = None):
     >>> print [D[v] for v in [s, t, x, y, z]] # [0, 8, 9, 5, 7]
     >>> print s not in P # True
     >>> print [P[v] for v in [t, x, y, z]] == [y, t, s, y] # True
-    ```
+    
     """
     if start == None:
         start = graph.keys()[0]
@@ -330,7 +330,7 @@ def johnson(graph):
     dict{dict{}}, dict{dict{}}
 
     simple use:
-    ```
+    
     >>> a, b, c, d, e = range(5)
     >>> W = {
         a: {c:1, d:7},
@@ -345,7 +345,7 @@ def johnson(graph):
     >>> print [D[c][v] for v in [a, b, c, d, e]] # [-1, -5, 0, -2, 2]
     >>> print [D[d][v] for v in [a, b, c, d, e]] # [5, 1, 6, 0, 8]
     >>> print [D[e][v] for v in [a, b, c, d, e]] # [1, -3, 2, -4, 0]
-    ```
+    
     """
     graph = copy.deepcopy(graph)                           
     s = graph.keys()[0]  
@@ -379,8 +379,8 @@ def floyd_warshall1(graph):
     -------
         dict{dict{}}
 
-    simple use:
-    ```
+    example:
+    
     >>> a, b, c, d, e = range(1,6) # One-based
     >>> W = {
     >>>     a: {c:1, d:7},
@@ -399,7 +399,7 @@ def floyd_warshall1(graph):
     >>> print [D[c][v] for v in [a, b, c, d, e]] # [-1, -5, 0, -2, 2]
     >>> print [D[d][v] for v in [a, b, c, d, e]] # [5, 1, 6, 0, 8]
     >>> print [D[e][v] for v in [a, b, c, d, e]] # [1, -3, 2, -4, 0]
-    ```
+    
     """
     distance = copy.deepcopy(graph)                           
     for k in distance:                               
@@ -420,13 +420,19 @@ def floyd_warshall1(graph):
 
 def DFSTraverse(graph, start = None):
     """
+    para
+    -----
+    ALGraph,str/int
 
-    graph = {'A': set(['B', 'C']),
-         'B': set(['A', 'D', 'E']),
-         'C': set(['A', 'F']),
-         'D': set(['B']),
-         'E': set(['B', 'F']),
-         'F': set(['C', 'E'])}
+    return
+    ------
+    list
+    >>> graph = {'A': set(['B', 'C']),
+    >>>  'B': set(['A', 'D', 'E']),
+    >>>  'C': set(['A', 'F']),
+    >>>  'D': set(['B']),
+    >>>  'E': set(['B', 'F']),
+    >>>  'F': set(['C', 'E'])}
     
     ref
     -----

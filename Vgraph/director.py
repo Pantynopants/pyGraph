@@ -86,9 +86,6 @@ def getInDegree(DGlist):
     pass
 
 
-def IsEdge():
-    pass
-
 
 def is_fin(current_list, view_list):
     """

@@ -9,11 +9,14 @@ wait_field = [] #[(car_number, time)]
 outside_road = Queue.Queue(maxsize = CAPACITY_ROAD) #[(car_number, time)]
 
 def start():
+    print("WEICOME TO PARKING SYSTEM!")
     print("input simple:0 123123 2030")
     print("that means the car leave(0, enter by 1), number is 123123, time is 20:30")
     print("using space to split")
     while True:       
         line = raw_input("enter sth, -1 to exist")
+        if line.strip() == "-1":
+            break
         print("carpark and waitfield")
         print(carpark)
         print(wait_field)
@@ -24,8 +27,7 @@ def start():
             print("wrong input, plz try again")
             update()
             continue
-        if int(line.split()[0]) == -1:
-            break
+        
      
         print(data)
         if int(data[0]) == 0:
@@ -37,6 +39,16 @@ def start():
         
 
 def checkin(car_number, time):
+    """let the car in stack or wait, in that time
+    para
+    -----
+    car_number:int/str
+    time:str
+    return
+    ------
+    position:int 
+        position of new car
+    """
     if not is_carpark_avaliable(): # put it in outside_road        
         outside_road.put((car_number, time))
         position = outside_road.qsize() + CAPACITY_CARPARK  
@@ -49,6 +61,16 @@ def checkin(car_number, time):
     return position
 
 def withdraw(car_number, time):
+    """
+    para
+    -----
+    car_number:int/str
+    time:str
+    return
+    -------
+    car_index:int
+    delta_time:int
+    """
     in_carpark = filter(lambda x: x[0] == car_number, carpark)
     in_waitfield = filter(lambda x: x[0] == car_number, wait_field)
     print(in_carpark)
@@ -71,6 +93,8 @@ def withdraw(car_number, time):
     return car_index, delta_time
 
 def update():
+    """helper function for store in stack or queue
+    """
     while not is_outside_road_empty and is_carpark_avaliable: gointo_carpark()
     while not is_waitfield_empty and is_carpark_avaliable: fulfill()
 

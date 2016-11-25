@@ -13,100 +13,9 @@ import datetime
 reload(sys)
 sys.setdefaultencoding( "utf-8" )
 
-def main():
-    # director.CreatTourSortGraph(ALGraph())
-    # temp = utils.load_csv_to_models() #ALGraph
-    # print(temp)
-    # print("#"*40)
-    distance = 0
-    temp = utils.load_graph() #dataframe
-    # temp = utils.load_graph(file_path = 'data/topo3.csv',
-    # start_position = 1, end_position = 2, weight_positon = 3)
-    # temp = temp[u"北门"]
-
-    # for i in temp.index.index:
-    #     print(i)
-    # algorithms.floyd(temp)
-
-    # path, distance = director.CreatTourSortGraph(temp) 
-    # print("#"*40)
-    # for i in path:
-    #     print(i)
-    # print("#"*40)   
-    # g = nxutil.load_csv_nx()
-    # # nxutil.show(g)
-    # # p = nxutil.create_nxgraph_from(path)
-    # nxutil.show(g, path_list = path)
-
-
-    # algorithms_edgearr.TopoSort(path)
-
-
-    # dis_list, distance = algorithms.MST(temp)
-    # for x in dis_list:
-    #      print(x)
-    # print(distance)
-
-
-    # (points, path), distance = algorithms.DFSTraverse(temp, start = u'北门') 
-    # for i,j in path:
-    #     print(i),
-    #     print(j)
-    # print("#"*40)
-
-
-    # dist, path = algorithms.dijkstra(temp,  start = u'碧水亭', end = u"北门")
-    # for x in path:
-    #     for y in x:
-    #         print(y)
-    #     print("\n")
-
-    # temp = EdgesetArray()
-    # temp = temp.load_csv()
-    # tree = algorithms_edgearr.kruskal(temp)
-    # for x in tree:
-    #     print(x[0]),
-    #     print(x[1]),
-    #     print(x[2])
-    
-    # path = algorithms_edgearr.prim(temp)
-    # for i,j in path.items():
-    #     print(i), 
-    #     print(j)
-
-    # for i,j in algorithms_edgearr.kruskal_ALGraph(temp):
-    #     print(i), 
-    #     print(j)
-    
-    # D, P = algorithms_edgearr.bellman_ford(temp, u"北门")
-    # print(D)
-    # for k,v in D.items():
-    #     print(k), 
-    #     print(v)
-
-    # path, _ = algorithms_edgearr.dijkstra(temp, u"北门")
-    # print(type(path))
-    # for i,j in path.items():
-    #     print(i),
-    #     print(j)
-
-    # D, P = algorithms_edgearr.johnson(temp)
-    # for k,v in D.items():
-    #     for x,y in v.items():
-    #         print(k),
-    #         print(x),
-    #         print(y)
-
-    # D = algorithms_edgearr.floyd_warshall1(temp)
-    # for k,v in D.items():
-    #     for x,y in v.items():
-    #         print(k),
-    #         print(x),
-    #         print(y)
-    print("total distance:"),
-    print(distance)
-
 def compare():
+    """compare all datastructure and algorithms here
+    """
     df = utils.load_graph(file_path = 'data/topo4.csv',
         start_position = 1, end_position = 2, weight_positon = 3)
     alg = utils.load_csv_to_models(file_path = 'data/topo4.csv',
@@ -219,13 +128,14 @@ def start():
     """menu func
     """
     
-
+    distance = 0
     flag = False
     g = None
     path = None
     shortest_path = None
     file_path = None
-    temp = utils.load_graph() #dataframe
+    temp = utils.load_graph() #DataFrame    #default csv file
+
     # temp = utils.load_graph(file_path = 'data/topo3.csv',
     # start_position = 1, end_position = 2, weight_positon = 3)
     while True:     
@@ -253,9 +163,14 @@ def start():
                 temp = utils.load_graph(file_path = 'data/graph1.csv',
             start_position = 0, end_position = 1, weight_positon = 2)
             else:
+                try:
+                    temp = utils.load_graph(file_path = 'data/' + file_path.strip(),
+                        start_position = 1, end_position = 2, weight_positon = 3)
+                    g = nxutil.load_csv_nx(file_path = 'data/' + file_path.strip())
+                except:
+                    print("no that file")
+                    continue
                 
-                temp = utils.load_graph(file_path = 'data/' + file_path.strip(),
-            start_position = 1, end_position = 2, weight_positon = 3)
 
         elif line.strip() == "2":
             if flag:
@@ -271,7 +186,9 @@ def start():
             print("#"*40)
             for i in path:
                 print(i)
-            print("#"*40)   
+            print("#"*40) 
+            print(u"total length:")  
+            print(distance)  
             if g == None:
                 if file_path != None:
                     g = nxutil.load_csv_nx(file_path = 'data/' + file_path.strip())
@@ -300,6 +217,11 @@ def start():
                 start = u'北门'
                 end = u'碧水亭'
             
+            # print(temp.columns.values[0])
+            if (type(temp.columns.values[0]) != unicode):
+                start = int(start)
+                end = int(end)
+            print type(end)
             dist, shortest_path = algorithms.dijkstra(temp,  
                     start = start, 
                     end = end
@@ -307,9 +229,7 @@ def start():
             shortest_path.insert(0, start)
             shortest_path.append(end)
             for x in shortest_path:
-                for y in x:
-                    print(y)
-                print("\n")
+                print(x)
             if g == None:
                 g = nxutil.load_csv_nx()
             nxutil.show(g, path_list = shortest_path)
@@ -317,17 +237,20 @@ def start():
         elif line.strip() == "6":
             dis_list, distance = algorithms.MST(temp)
             print(u"------------修路------------------")
-            for x,y in dis_list:
-                 print(x),
-                 print(" --> "),
-                 print(y)
+            for e in dis_list:
+                print(e[0]),
+                print(" --> "),
+                print(e[1])
+            print(u"total length:")  
             print(distance)
             if g == None:
                 g = nxutil.load_csv_nx()
             nxutil.show(g, path_list = dis_list)
 
         elif line.strip() == "7":
-            recommend.start(file_path)
+            
+            
+            recommend.start(file_path = file_path)
             
         elif line.strip() == "8":
             parking.start()
@@ -343,7 +266,6 @@ def start():
 
 if __name__ == '__main__':
     start()
-    # main()
     # compare()
     # parking.start()
     # recommend.start()

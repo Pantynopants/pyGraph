@@ -16,9 +16,13 @@ def start(file_path):
     """
     user_input = None
     temp = models.EdgesetArray()
+
     utils.enhance_method(models.EdgesetArray, 'load_csv', add_comment)
+
     if file_path == None:
         file_path = "data/graph.csv"
+    else:
+        file_path = 'data/' + file_path.strip()
     temp = temp.load_csv(file_path = file_path)     # (score, comment)
 
     g = nxutil.load_csv_nx(file_path)
@@ -48,6 +52,9 @@ def start(file_path):
             except:
                 user_input = u'北门'
             
+            if (type(temp[1].keys()[0]) != unicode):
+                user_input = int(user_input)
+
             if user_input in temp[1].keys():
                 print("Object find!")
                 print(user_input),
@@ -59,7 +66,7 @@ def start(file_path):
                     print(i)
 
             print(user_input, type(user_input))
-            nxutil.show(g, node_list = [user_input])
+            nxutil.show(g, node_list = [str(user_input).encode("utf-8").decode("utf-8")])
     
 
 def add_comment(old_method, self, *args, **kwds):
@@ -71,7 +78,7 @@ def add_comment(old_method, self, *args, **kwds):
     return_value = old_method(self, *args, **kwds) # call the original method
     v_number = return_value.get_all_vertexes()
     comment = {
-        k:k + "is a good place"         # comment
+        k:str(k).encode("utf-8").decode("utf-8")  + " is a good place"         # comment
         for k in v_number
     }
     score = {

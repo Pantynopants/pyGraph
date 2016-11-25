@@ -22,10 +22,10 @@ def dijkstra(graph, start = None, end = None):
 
     return:distance from start to every point; the path from start point to others
         dist = {
-        pointName:( distance = graph[start] (dataframe), isVisted = 0, path = [] )
+        pointName:[ distance = graph[start] (dataframe), isVisted = 0, path = [] ]
         }
         or
-        distance:number, path:list
+        distance:number, path:list []
 
     reference
     ----------
@@ -109,6 +109,8 @@ def floyd(graph):
 
 
 def MST(graph, method = "prim_heap"):
+    """using different algorithm to get MST
+    """
     if method == "prim_heap":
         return prim_heap(graph)
 
@@ -123,7 +125,7 @@ def prim_heap(graph):
         dataframe
 
     return: a list of MST
-        list
+        list,[()]
     """
     n = len(graph )
     # vertexes = [u"北门"]
