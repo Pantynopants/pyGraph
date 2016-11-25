@@ -6,6 +6,8 @@ using DataFrame to solve some algorithm questions
 
 Also a superset of college's experiment 
 
+If u do not wanna use networkx, just try it ;)
+
 install
 -------
 
@@ -15,7 +17,7 @@ install
 
 Doc
 ----
-https://pantynopants.github.io/pyGraph/
+http://pygraph-.readthedocs.io/en/latest
 
 ref
 ---------
