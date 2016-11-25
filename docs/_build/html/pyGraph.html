@@ -47,10 +47,10 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="pyGraph.Vgraph.html">pyGraph.Vgraph package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="pyGraph.Vgraph.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyGraph.Vgraph.html#pygraph-vgraph-director-module">pyGraph.Vgraph.director module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyGraph.Vgraph.html#pygraph-vgraph-parking-module">pyGraph.Vgraph.parking module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyGraph.Vgraph.html#pygraph-vgraph-recommend-module">pyGraph.Vgraph.recommend module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pyGraph.Vgraph.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGraph.Vgraph.html#module-pyGraph.Vgraph.director">pyGraph.Vgraph.director module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGraph.Vgraph.html#module-pyGraph.Vgraph.parking">pyGraph.Vgraph.parking module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGraph.Vgraph.html#module-pyGraph.Vgraph.recommend">pyGraph.Vgraph.recommend module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyGraph.Vgraph.html#module-pyGraph.Vgraph">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pyGraph.nx.html">pyGraph.nx package</a><ul>
@@ -71,9 +71,9 @@
 <dt id="pyGraph.algorithms.BFSTraverse">
 <code class="descclassname">pyGraph.algorithms.</code><code class="descname">BFSTraverse</code><span class="sig-paren">(</span><em>graph</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms.BFSTraverse" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
-<dt>para:</dt>
+<dt>Parameters:</dt>
 <dd>graph:DataFrame, start:unicode(according to pandas)</dd>
-<dt>return:</dt>
+<dt>Returns:</dt>
 <dd>visited(list), path(list [(a,b),(b,c),,,]): real road, consecutive</dd>
 </dl>
 </dd></dl>
@@ -82,9 +82,9 @@
 <dt id="pyGraph.algorithms.DFSTraverse">
 <code class="descclassname">pyGraph.algorithms.</code><code class="descname">DFSTraverse</code><span class="sig-paren">(</span><em>graph</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms.DFSTraverse" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
-<dt>para:</dt>
+<dt>Parameters:</dt>
 <dd>graph:DataFrame, start:unicode(according to pandas)</dd>
-<dt>return:</dt>
+<dt>Returns:</dt>
 <dd>visited(list), path(list [(a,b),(b,c),,,]): real road, consecutive</dd>
 </dl>
 </dd></dl>
@@ -94,7 +94,7 @@
 <code class="descclassname">pyGraph.algorithms.</code><code class="descname">DFSTraverse_path</code><span class="sig-paren">(</span><em>graph</em>, <em>start</em>, <em>goal=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms.DFSTraverse_path" title="Permalink to this definition">¶</a></dt>
 <dd><p>DFS with path as return value</p>
 <p>iterable.
-para:</p>
+Parameters:</p>
 <blockquote>
 <div>graph:DataFrame, start:unicode(according to pandas)</div></blockquote>
 <p><a class="reference external" href="https://github.com/israelst/Algorithms-Book--Python">https://github.com/israelst/Algorithms-Book&#8211;Python</a></p>
@@ -111,11 +111,12 @@ para:</p>
 <code class="descclassname">pyGraph.algorithms.</code><code class="descname">dijkstra</code><span class="sig-paren">(</span><em>graph</em>, <em>start=None</em>, <em>end=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms.dijkstra" title="Permalink to this definition">¶</a></dt>
 <dd><p>get 1 point to others points&#8217; shortest path
 time complexity O(n^2)
-para:</p>
+Parameters:
+&#8212;&#8212;&#8212;&#8211;</p>
 <blockquote>
 <div>DataFrame, str(unicode), str(unicode)</div></blockquote>
 <dl class="docutils">
-<dt>return:distance from start to every point; the path from start point to others</dt>
+<dt>distance from start to every point; the path from start point to others</dt>
 <dd>dist = {
 pointName:[ distance = graph[start] (dataframe), isVisted = 0, path = [] ]
 }
@@ -150,7 +151,7 @@ Floyd-Warshall algorithm O(n^3)</p>
 <code class="descclassname">pyGraph.algorithms.</code><code class="descname">prim</code><span class="sig-paren">(</span><em>graph</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms.prim" title="Permalink to this definition">¶</a></dt>
 <dd><p>an algorithm for gengrate MST
 time complexity O(v^2)
-para
+Parameters
 &#8212;&#8211;
 2D array-like</p>
 <p>dis:list (distace)
@@ -160,13 +161,13 @@ pre:list (path to that distance)</p>
 <dl class="function">
 <dt id="pyGraph.algorithms.prim_heap">
 <code class="descclassname">pyGraph.algorithms.</code><code class="descname">prim_heap</code><span class="sig-paren">(</span><em>graph</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms.prim_heap" title="Permalink to this definition">¶</a></dt>
-<dd><p>O(v^2) for bad situation
+<dd><p>time complexity O(E * log2 E)
 using heap to optimtiz algorithm
-para:</p>
+Parameters:</p>
 <blockquote>
 <div>dataframe</div></blockquote>
 <dl class="docutils">
-<dt>return: a list of MST</dt>
+<dt>: a list of MST</dt>
 <dd>list,[()]</dd>
 </dl>
 </dd></dl>
@@ -205,11 +206,11 @@ para:</p>
 because it has been confirmed: computer cannot judge the dead loop,
 by Turing</p>
 <p>result may different since the start point is not same every time
-para: sequent route, with directed; matrix</p>
+Parameters: sequent route, with directed; matrix</p>
 <blockquote>
 <div>list, dataframe</div></blockquote>
 <dl class="docutils">
-<dt>return: circle of route</dt>
+<dt>Returns: circle of route</dt>
 <dd>list</dd>
 </dl>
 </dd></dl>
@@ -246,11 +247,11 @@ start_poi: unicode</p>
 <code class="descclassname">pyGraph.algorithms_edgearr.</code><code class="descname">dijkstra</code><span class="sig-paren">(</span><em>graph</em>, <em>start=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms_edgearr.dijkstra" title="Permalink to this definition">¶</a></dt>
 <dd><p>get 1 point to others points&#8217; shortest path
 time complexity O(n^2)
-para:</p>
+Parameters:</p>
 <blockquote>
 <div>ALGraph, unicode(start point)</div></blockquote>
 <dl class="docutils">
-<dt>return:</dt>
+<dt>Returns:</dt>
 <dd>dict, dict</dd>
 </dl>
 <p>simple use</p>
@@ -336,9 +337,9 @@ time complexity : O(V * E * lg(V))</p>
 <dd><p>an algorithm for gengrate MST
 time complexity O(E * log2 E)</p>
 <dl class="docutils">
-<dt>para:</dt>
+<dt>Parameters:</dt>
 <dd>EdgesetArray</dd>
-<dt>return:</dt>
+<dt>Returns:</dt>
 <dd>set( {()} )</dd>
 </dl>
 <p>example return
@@ -355,11 +356,11 @@ time complexity O(E * log2 E)</p>
 <code class="descclassname">pyGraph.algorithms_edgearr.</code><code class="descname">kruskal_ALGraph</code><span class="sig-paren">(</span><em>graph</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.algorithms_edgearr.kruskal_ALGraph" title="Permalink to this definition">¶</a></dt>
 <dd><p>an algorithm for gengrate MST
 time complexity O(E * log2 E)
-para:</p>
+Parameters:</p>
 <blockquote>
 <div>ALGraph</div></blockquote>
 <dl class="docutils">
-<dt>return:</dt>
+<dt>Returns:</dt>
 <dd>set</dd>
 </dl>
 <p>simple input:</p>
@@ -411,8 +412,27 @@ O(v^2)</p>
 </dd></dl>
 
 </div>
-<div class="section" id="pygraph-main-module">
-<h2>pyGraph.main module<a class="headerlink" href="#pygraph-main-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-pyGraph.main">
+<span id="pygraph-main-module"></span><h2>pyGraph.main module<a class="headerlink" href="#module-pyGraph.main" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pyGraph.main.compare">
+<code class="descclassname">pyGraph.main.</code><code class="descname">compare</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.main.compare" title="Permalink to this definition">¶</a></dt>
+<dd><p>compare all datastructure and algorithms here</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.main.get_func_time">
+<code class="descclassname">pyGraph.main.</code><code class="descname">get_func_time</code><span class="sig-paren">(</span><em>func</em>, <em>*arg</em>, <em>**kw</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.main.get_func_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the excute time for 2 functions, with same data
+maybe different datastructure</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.main.start">
+<code class="descclassname">pyGraph.main.</code><code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.main.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>menu func</p>
+</dd></dl>
+
 </div>
 <div class="section" id="module-pyGraph.models">
 <span id="pygraph-models-module"></span><h2>pyGraph.models module<a class="headerlink" href="#module-pyGraph.models" title="Permalink to this headline">¶</a></h2>
@@ -518,7 +538,7 @@ unicode: int</p>
 <dt id="pyGraph.models.EdgesetArray.del_vertex">
 <code class="descname">del_vertex</code><span class="sig-paren">(</span><em>name=''</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.del_vertex" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
-<dt>para: name of vertex</dt>
+<dt>Parameters: name of vertex</dt>
 <dd>unicode</dd>
 </dl>
 </dd></dl>
@@ -527,11 +547,11 @@ unicode: int</p>
 <dt id="pyGraph.models.EdgesetArray.edge">
 <code class="descname">edge</code><a class="headerlink" href="#pyGraph.models.EdgesetArray.edge" title="Permalink to this definition">¶</a></dt>
 <dd><p>check if &#8220;start&#8221; column and &#8220;end&#8221; column can meet the parameter
-para:</p>
+Parameters:</p>
 <blockquote>
 <div>unicode, unicode</div></blockquote>
 <dl class="docutils">
-<dt>return:</dt>
+<dt>Returns:</dt>
 <dd>pd.dataframe</dd>
 </dl>
 </dd></dl>
@@ -552,11 +572,11 @@ para:</p>
 <dt id="pyGraph.models.EdgesetArray.get_edge">
 <code class="descname">get_edge</code><span class="sig-paren">(</span><em>start_poi</em>, <em>end_poi</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.get_edge" title="Permalink to this definition">¶</a></dt>
 <dd><p>check if &#8220;start&#8221; column and &#8220;end&#8221; column can meet the parameter
-para:</p>
+Parameters:</p>
 <blockquote>
 <div>unicode, unicode</div></blockquote>
 <dl class="docutils">
-<dt>return:</dt>
+<dt>Returns:</dt>
 <dd>pd.dataframe</dd>
 </dl>
 </dd></dl>
@@ -565,7 +585,7 @@ para:</p>
 <dt id="pyGraph.models.EdgesetArray.get_indegrees">
 <code class="descname">get_indegrees</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.get_indegrees" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
-<dt>return:</dt>
+<dt>Returns:</dt>
 <dd>dict{name:indegree}</dd>
 </dl>
 </dd></dl>
@@ -600,11 +620,11 @@ para:</p>
 <dt id="pyGraph.models.EdgesetArray.route_to_edgeSetArray">
 <code class="descname">route_to_edgeSetArray</code><span class="sig-paren">(</span><em>route_list</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.route_to_edgeSetArray" title="Permalink to this definition">¶</a></dt>
 <dd><p>change self, from a point chain to a edges set
-para:</p>
+Parameters:</p>
 <blockquote>
 <div>route_list: (unicode) list</div></blockquote>
 <dl class="docutils">
-<dt>return:</dt>
+<dt>Returns:</dt>
 <dd>Edgesetarray</dd>
 </dl>
 </dd></dl>
@@ -613,7 +633,7 @@ para:</p>
 <dt id="pyGraph.models.EdgesetArray.set_edge">
 <code class="descname">set_edge</code><span class="sig-paren">(</span><em>index</em>, <em>val</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.models.EdgesetArray.set_edge" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
-<dt>para:</dt>
+<dt>Parameters:</dt>
 <dd>index of the edge</dd>
 </dl>
 </dd></dl>
@@ -666,7 +686,7 @@ del an edge, -1</p>
 <dt id="pyGraph.utils.LocateVex">
 <code class="descclassname">pyGraph.utils.</code><code class="descname">LocateVex</code><span class="sig-paren">(</span><em>adjacency_matrix</em>, <em>current_poi</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.LocateVex" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
-<dt>para:</dt>
+<dt>Parameters:</dt>
 <dd>DataFrame, unicode</dd>
 <dt>return: name(s) of adjacency point of current_poi</dt>
 <dd>DataFrame</dd>
@@ -695,7 +715,7 @@ del an edge, -1</p>
 <dt id="pyGraph.utils.create_matrix">
 <code class="descclassname">pyGraph.utils.</code><code class="descname">create_matrix</code><span class="sig-paren">(</span><em>df_index</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.utils.create_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
-<dt>para:index(view name here) of all</dt>
+<dt>Parameters:index(view name here) of all</dt>
 <dd>array-like</dd>
 <dt>return:</dt>
 <dd>dataframe</dd>
@@ -849,7 +869,7 @@ Decorate functions like this:</p>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-pyGraph.algorithms">pyGraph.algorithms module</a></li>
 <li><a class="reference internal" href="#module-pyGraph.algorithms_edgearr">pyGraph.algorithms_edgearr module</a></li>
-<li><a class="reference internal" href="#pygraph-main-module">pyGraph.main module</a></li>
+<li><a class="reference internal" href="#module-pyGraph.main">pyGraph.main module</a></li>
 <li><a class="reference internal" href="#module-pyGraph.models">pyGraph.models module</a></li>
 <li><a class="reference internal" href="#module-pyGraph.utils">pyGraph.utils module</a></li>
 <li><a class="reference internal" href="#module-contents">Module contents</a></li>

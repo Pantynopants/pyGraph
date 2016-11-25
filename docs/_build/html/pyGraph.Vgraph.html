@@ -44,18 +44,183 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="pygraph-vgraph-director-module">
-<h2>pyGraph.Vgraph.director module<a class="headerlink" href="#pygraph-vgraph-director-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-pyGraph.Vgraph.director">
+<span id="pygraph-vgraph-director-module"></span><h2>pyGraph.Vgraph.director module<a class="headerlink" href="#module-pyGraph.Vgraph.director" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pyGraph.Vgraph.director.CreatTourSortGraph">
+<code class="descclassname">pyGraph.Vgraph.director.</code><code class="descname">CreatTourSortGraph</code><span class="sig-paren">(</span><em>graph</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.director.CreatTourSortGraph" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>ALGraph or dataframe</div></blockquote>
+<dl class="docutils">
+<dt>tour route</dt>
+<dd>list</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.Vgraph.director.getInDegree">
+<code class="descclassname">pyGraph.Vgraph.director.</code><code class="descname">getInDegree</code><span class="sig-paren">(</span><em>DGlist</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.director.getInDegree" title="Permalink to this definition">¶</a></dt>
+<dd><p>using indegree_list = edarray.get_indegrees() instead
+Parameters:</p>
+<blockquote>
+<div>list</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>degree_dict = {pointname:point_indegree}</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.Vgraph.director.input_TourSortGraph">
+<code class="descclassname">pyGraph.Vgraph.director.</code><code class="descname">input_TourSortGraph</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.director.input_TourSortGraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>create csv file by user input</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.Vgraph.director.is_fin">
+<code class="descclassname">pyGraph.Vgraph.director.</code><code class="descname">is_fin</code><span class="sig-paren">(</span><em>current_list</em>, <em>view_list</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.director.is_fin" title="Permalink to this definition">¶</a></dt>
+<dd><p>check whether the rote of director is finished
+Parameters: viewlist means points you&#8217;v visited</p>
+<blockquote>
+<div>list</div></blockquote>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>T if finished
+F if not</dd>
+</dl>
+</dd></dl>
+
 </div>
-<div class="section" id="pygraph-vgraph-parking-module">
-<h2>pyGraph.Vgraph.parking module<a class="headerlink" href="#pygraph-vgraph-parking-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-pyGraph.Vgraph.parking">
+<span id="pygraph-vgraph-parking-module"></span><h2>pyGraph.Vgraph.parking module<a class="headerlink" href="#module-pyGraph.Vgraph.parking" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pyGraph.Vgraph.parking.checkin">
+<code class="descclassname">pyGraph.Vgraph.parking.</code><code class="descname">checkin</code><span class="sig-paren">(</span><em>car_number</em>, <em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.parking.checkin" title="Permalink to this definition">¶</a></dt>
+<dd><p>let the car in stack or wait, in that time
+Parameters
+&#8212;&#8211;
+car_number:int/str
+time:str
+Returns
+&#8212;&#8212;
+position:int</p>
+<blockquote>
+<div>position of new car</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.Vgraph.parking.fulfill">
+<code class="descclassname">pyGraph.Vgraph.parking.</code><code class="descname">fulfill</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.parking.fulfill" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.Vgraph.parking.gointo_carpark">
+<code class="descclassname">pyGraph.Vgraph.parking.</code><code class="descname">gointo_carpark</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.parking.gointo_carpark" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.Vgraph.parking.is_carpark_avaliable">
+<code class="descclassname">pyGraph.Vgraph.parking.</code><code class="descname">is_carpark_avaliable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.parking.is_carpark_avaliable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.Vgraph.parking.is_outside_road_empty">
+<code class="descclassname">pyGraph.Vgraph.parking.</code><code class="descname">is_outside_road_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.parking.is_outside_road_empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.Vgraph.parking.is_waitfield_empty">
+<code class="descclassname">pyGraph.Vgraph.parking.</code><code class="descname">is_waitfield_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.parking.is_waitfield_empty" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.Vgraph.parking.start">
+<code class="descclassname">pyGraph.Vgraph.parking.</code><code class="descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.parking.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.Vgraph.parking.update">
+<code class="descclassname">pyGraph.Vgraph.parking.</code><code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.parking.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>helper function for store in stack or queue</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.Vgraph.parking.withdraw">
+<code class="descclassname">pyGraph.Vgraph.parking.</code><code class="descname">withdraw</code><span class="sig-paren">(</span><em>car_number</em>, <em>time</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.parking.withdraw" title="Permalink to this definition">¶</a></dt>
+<dd><p>car_number:int/str
+time:str
+Returns
+&#8212;&#8212;-
+car_index:int
+delta_time:int</p>
+</dd></dl>
+
 </div>
-<div class="section" id="pygraph-vgraph-recommend-module">
-<h2>pyGraph.Vgraph.recommend module<a class="headerlink" href="#pygraph-vgraph-recommend-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-pyGraph.Vgraph.recommend">
+<span id="pygraph-vgraph-recommend-module"></span><h2>pyGraph.Vgraph.recommend module<a class="headerlink" href="#module-pyGraph.Vgraph.recommend" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="pyGraph.Vgraph.recommend.add_comment">
+<code class="descclassname">pyGraph.Vgraph.recommend.</code><code class="descname">add_comment</code><span class="sig-paren">(</span><em>old_method</em>, <em>self</em>, <em>*args</em>, <em>**kwds</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.recommend.add_comment" title="Permalink to this definition">¶</a></dt>
+<dd><p>for enhence methods</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.Vgraph.recommend.fuzzyfinder">
+<code class="descclassname">pyGraph.Vgraph.recommend.</code><code class="descname">fuzzyfinder</code><span class="sig-paren">(</span><em>user_input</em>, <em>comment</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.recommend.fuzzyfinder" title="Permalink to this definition">¶</a></dt>
+<dd><p>user_input:str
+comment: dict or list</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">fuzzyfinder</span><span class="p">(</span><span class="s1">&#39;user&#39;</span><span class="p">,</span> <span class="n">collection</span><span class="p">)</span>
+<span class="go">[&#39;user_group.doc&#39;, &#39;api_user.doc&#39;]</span>
+</pre></div>
 </div>
-<div class="section" id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-pyGraph.Vgraph"></span></div>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="http://blog.amjith.com/fuzzyfinder-in-10-lines-of-python">http://blog.amjith.com/fuzzyfinder-in-10-lines-of-python</a></td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.Vgraph.recommend.sort_score">
+<code class="descclassname">pyGraph.Vgraph.recommend.</code><code class="descname">sort_score</code><span class="sig-paren">(</span><em>score</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.recommend.sort_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>score: dict</p>
+<p>[(),]</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="http://gaopenghigh.iteye.com/blog/1483864">http://gaopenghigh.iteye.com/blog/1483864</a></td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="pyGraph.Vgraph.recommend.start">
+<code class="descclassname">pyGraph.Vgraph.recommend.</code><code class="descname">start</code><span class="sig-paren">(</span><em>file_path</em><span class="sig-paren">)</span><a class="headerlink" href="#pyGraph.Vgraph.recommend.start" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="http://blog.jobbole.com/21351/">http://blog.jobbole.com/21351/</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><a class="reference external" href="http://www.jb51.net/article/64123.htm">http://www.jb51.net/article/64123.htm</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><a class="reference external" href="http://www.jb51.net/article/87479.htm">http://www.jb51.net/article/87479.htm</a></td></tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-pyGraph.Vgraph">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyGraph.Vgraph" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
@@ -68,10 +233,10 @@
   <ul>
 <li><a class="reference internal" href="#">pyGraph.Vgraph package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#pygraph-vgraph-director-module">pyGraph.Vgraph.director module</a></li>
-<li><a class="reference internal" href="#pygraph-vgraph-parking-module">pyGraph.Vgraph.parking module</a></li>
-<li><a class="reference internal" href="#pygraph-vgraph-recommend-module">pyGraph.Vgraph.recommend module</a></li>
-<li><a class="reference internal" href="#module-contents">Module contents</a></li>
+<li><a class="reference internal" href="#module-pyGraph.Vgraph.director">pyGraph.Vgraph.director module</a></li>
+<li><a class="reference internal" href="#module-pyGraph.Vgraph.parking">pyGraph.Vgraph.parking module</a></li>
+<li><a class="reference internal" href="#module-pyGraph.Vgraph.recommend">pyGraph.Vgraph.recommend module</a></li>
+<li><a class="reference internal" href="#module-pyGraph.Vgraph">Module contents</a></li>
 </ul>
 </li>
 </ul>

@@ -43,11 +43,11 @@ def start():
 
 def checkin(car_number, time):
     """let the car in stack or wait, in that time
-    para
+    Parameters
     -----
     car_number:int/str
     time:str
-    return
+    Returns
     ------
     position:int 
         position of new car
@@ -65,11 +65,11 @@ def checkin(car_number, time):
 
 def withdraw(car_number, time):
     """
-    para
+    Parameters
     -----
     car_number:int/str
     time:str
-    return
+    Returns
     -------
     car_index:int
     delta_time:int

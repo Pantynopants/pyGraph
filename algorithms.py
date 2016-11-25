@@ -17,10 +17,13 @@ all algorithms in this model receive Pandas.DataFrame as input
 def dijkstra(graph, start = None, end = None):
     r"""get 1 point to others points' shortest path
     time complexity O(n^2)
-    para:
+    Parameters:
+    -----------
         DataFrame, str(unicode), str(unicode)
 
-    return:distance from start to every point; the path from start point to others
+    Returns:
+    ---------------
+    distance from start to every point; the path from start point to others
         dist = {
         pointName:[ distance = graph[start] (dataframe), isVisted = 0, path = [] ]
         }
@@ -86,11 +89,11 @@ def floyd(graph):
     let all points' edges to simplified
     Floyd-Warshall algorithm O(n^3)
 
-    para
+    Parameters
     ------
     graph: pd.dataframe
 
-    return
+    Returns
     -------
     result:pd.dataframe
     """
@@ -125,10 +128,12 @@ def prim_heap(graph):
     r"""
     time complexity O(E * log2 E)
     using heap to optimtiz algorithm
-    para:
+    Parameters:
         dataframe
 
-    return: a list of MST
+    Returns
+    --------
+    : a list of MST
         list,[()]
     """
     n = len(graph )
@@ -166,11 +171,11 @@ def prim_heap(graph):
 def prim(graph):
     """an algorithm for gengrate MST
     time complexity O(v^2)
-    para
+    Parameters
     -----
     2D array-like
 
-    return
+    Returns
     -------
     dis:list (distace)
     pre:list (path to that distance)
@@ -208,7 +213,7 @@ def DFSTraverse_path(graph, start, goal = None):
     DFS with path as return value
 
     iterable.
-    para:
+    Parameters:
         graph:DataFrame, start:unicode(according to pandas)
 
     reference
@@ -235,10 +240,10 @@ def DFSTraverse_path(graph, start, goal = None):
 @utils.get_total_dist
 def DFSTraverse(graph, start = None):
     r"""
-    para:
+    Parameters:
         graph:DataFrame, start:unicode(according to pandas)
 
-    return:
+    Returns:
         visited(list), path(list [(a,b),(b,c),,,]): real road, consecutive
     """
     
@@ -273,10 +278,10 @@ def DFSTraverse(graph, start = None):
 @utils.get_total_dist
 def BFSTraverse(graph, start = None):
     r"""
-    para:
+    Parameters:
         graph:DataFrame, start:unicode(according to pandas)
 
-    return:
+    Returns:
         visited(list), path(list [(a,b),(b,c),,,]): real road, consecutive
     """
     

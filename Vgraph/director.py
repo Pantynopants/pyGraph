@@ -49,9 +49,12 @@ def input_TourSortGraph():
 @utils.get_total_dist
 def CreatTourSortGraph(graph):
     """
-    para:
+    Parameters:
+    ------------
         ALGraph or dataframe
-    return: tour route
+    Returns: 
+    ---------
+    tour route
         list
     """
     if utils.graph_type(graph)[0] == "ALGraph":
@@ -78,9 +81,9 @@ def CreatTourSortGraph(graph):
 def getInDegree(DGlist):
     """
     using indegree_list = edarray.get_indegrees() instead
-    para:
+    Parameters:
         list
-    return:
+    Returns:
         degree_dict = {pointname:point_indegree}
     """
     pass
@@ -90,9 +93,9 @@ def getInDegree(DGlist):
 def is_fin(current_list, view_list):
     """
     check whether the rote of director is finished
-    para: viewlist means points you'v visited
+    Parameters: viewlist means points you'v visited
         list
-    return:
+    Returns:
         T if finished
         F if not
     """

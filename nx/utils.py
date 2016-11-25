@@ -14,7 +14,7 @@ mpl.rcParams['axes.unicode_minus'] = False
 
 def load_csv_nx(file_path = 'data/graph.csv', start_position = 0, end_position = 1, weight_positon = 2):
     """load csv file to networkx.Graph
-    para
+    Parameters
     -----
     file_path:str
     start_position:int
@@ -22,7 +22,7 @@ def load_csv_nx(file_path = 'data/graph.csv', start_position = 0, end_position =
     weight_positon:int
         the positon in csv file
         A,B,1 means from A to B, weight is 1
-    return
+    Returns
     ---------
     networkx.Graph
     """
@@ -53,7 +53,7 @@ def create_nxgraph_from(path_list):
 
 def show(G, path_list = None, node_list = None):
     """
-    para
+    Parameters
     -----
     G:networkx.Graph
     path_list:list

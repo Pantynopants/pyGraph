@@ -134,9 +134,9 @@ class EdgesetArray(object):
     def get_edge(self, start_poi, end_poi):
         """
         check if "start" column and "end" column can meet the parameter
-        para:
+        Parameters:
             unicode, unicode
-        return:
+        Returns:
             pd.dataframe
         """
         # del_poi_as_start = self._e[ self._e[u"start"] == name]
@@ -147,7 +147,7 @@ class EdgesetArray(object):
     
     def set_edge(self, index, val):
         """
-        para:
+        Parameters:
             index of the edge
         """
         self._e[index] = val
@@ -158,7 +158,7 @@ class EdgesetArray(object):
         add 1 row each time
         then update the indegree list
 
-        para
+        Parameters
         -----
         start: unicode
         unicode: int
@@ -184,7 +184,7 @@ class EdgesetArray(object):
 
     def get_vertex(self, vertexid):
         """
-        para
+        Parameters
         ----
         vertexid: unicode (also int)
 
@@ -200,7 +200,7 @@ class EdgesetArray(object):
 
     def del_vertex(self, name = ""):
         """
-        para: name of vertex
+        Parameters: name of vertex
             unicode
         """
 
@@ -232,7 +232,7 @@ class EdgesetArray(object):
     
     def load_csv(self, file_path = "data/graph.csv"):
         """
-        return
+        Returns
         -------
             self 
         (do not forget use = instead of singal instruct)
@@ -251,9 +251,9 @@ class EdgesetArray(object):
     def route_to_edgeSetArray(self, route_list):
         """
         change self, from a point chain to a edges set
-        para:
+        Parameters:
             route_list: (unicode) list
-        return:
+        Returns:
             Edgesetarray
         """
         for i in range(len(route_list) - 1):
@@ -276,7 +276,7 @@ class EdgesetArray(object):
 
     def get_indegrees(self):
         """
-        return:
+        Returns:
             dict{name:indegree}
         """
         return self._v

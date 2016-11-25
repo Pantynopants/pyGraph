@@ -90,7 +90,7 @@ def add_comment(old_method, self, *args, **kwds):
 
 def sort_score(score):
     """
-    para
+    Parameters
     -----
     score: dict
 
@@ -106,7 +106,7 @@ def sort_score(score):
 
 def fuzzyfinder(user_input, comment):
     """
-    para
+    Parameters
     -----
     user_input:str
     comment: dict or list

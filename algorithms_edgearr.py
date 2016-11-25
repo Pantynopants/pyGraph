@@ -15,10 +15,10 @@ def TopoSort(DGlist):
     by Turing
     
     result may different since the start point is not same every time
-    para: sequent route, with directed; matrix
+    Parameters: sequent route, with directed; matrix
         list, dataframe
 
-    return: circle of route
+    Returns: circle of route
         list
     """
     # DGlist = list(set(DGlist))    
@@ -68,10 +68,10 @@ def kruskal(graph):
     an algorithm for gengrate MST
     time complexity O(E * log2 E)
 
-    para:
+    Parameters:
         EdgesetArray
 
-    return:
+    Returns:
         set( {()} )
 
     example return
@@ -133,11 +133,11 @@ def prim(graph):
     """an algorithm for gengrate MST
     O(v^2)
 
-    para
+    Parameters
     ------
         ALGraph
 
-    return
+    Returns
     -------
         dict
 
@@ -177,10 +177,10 @@ def prim(graph):
 def kruskal_ALGraph(graph):
     """an algorithm for gengrate MST
     time complexity O(E * log2 E)
-    para:
+    Parameters:
         ALGraph
 
-    return:
+    Returns:
         set
 
     simple input:
@@ -228,12 +228,12 @@ def bellman_ford(graph, start = None):
     this is the advantage compired with dijkstra
     time complexity O(|V|*|E|)O(|V|*|E|)
 
-    para
+    Parameters
     ------
     graph:ALGraph
     start_poi: unicode
 
-    return
+    Returns
     -------
         dict, dict
 
@@ -273,9 +273,9 @@ def bellman_ford(graph, start = None):
 def dijkstra(graph, start = None):
     """get 1 point to others points' shortest path
     time complexity O(n^2)
-    para:
+    Parameters:
         ALGraph, unicode(start point)
-    return:
+    Returns:
         dict, dict
 
     simple use
@@ -317,11 +317,11 @@ def johnson(graph):
     perform well in sparse graph
     time complexity : O(V * E * lg(V)) 
 
-    para
+    Parameters
     -----
     graph:ALGraph
 
-    return
+    Returns
     --------
     dict{dict{}}, dict{dict{}}
 
@@ -367,11 +367,11 @@ def floyd_warshall1(graph):
     O(|V|^3)
     get shortest path of all vertex
 
-    para
+    Parameters
     ------
     graph: ALGraph
 
-    return
+    Returns
     -------
         dict{dict{}}
 
@@ -416,11 +416,11 @@ def floyd_warshall1(graph):
 
 def DFSTraverse(graph, start = None):
     """
-    para
+    Parameters
     -----
     ALGraph,str/int
 
-    return
+    Returns
     ------
     list
     >>> graph = {'A': set(['B', 'C']),

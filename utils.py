@@ -53,7 +53,7 @@ def enhance_method(target_class, method_name, replacement):
     replace exist methods
     if u want to change a function in class, using it
 
-    para
+    Parameters
     -----
     target_class: str(class name)
     method_name: str
@@ -70,7 +70,7 @@ def enhance_method(target_class, method_name, replacement):
 
 def create_matrix(df_index):
     """
-    para:index(view name here) of all
+    Parameters:index(view name here) of all
         array-like
     return:
         dataframe
@@ -121,7 +121,7 @@ def load_csv_to_models(file_path = 'data/graph.csv',
     for loop:read the csv 2 times
     because it is undirected graph
 
-    para
+    Parameters
     ------
         file_path(absoult or not):str
         vnode:str(class name, for creating class dynamic)
@@ -163,7 +163,7 @@ def load_csv_to_models(file_path = 'data/graph.csv',
 
 def ALGraph_to_martix(alg):
     """
-    para
+    Parameters
     ------
     alg:ALGraph
 
@@ -185,7 +185,7 @@ def ALGraph_to_martix(alg):
 
 def LocateVex(adjacency_matrix, current_poi):
     """
-    para:
+    Parameters:
         DataFrame, unicode
     return: name(s) of adjacency point of current_poi
         DataFrame
