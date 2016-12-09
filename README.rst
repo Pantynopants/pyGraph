@@ -41,8 +41,11 @@ dataset
 [Rdatasets](https://vincentarelbundock.github.io/Rdatasets/datasets.html)
 [youtubedata](http://netsg.cs.sfu.ca/youtubedata/)
 
-future work
------------------
-- [ ] [framework based on networkx](https://github.com/bdcht/grandalf)
-- [ ] [twitter graph visualization](https://github.com/JohnCoogan/twitter-graph-visualization)
-[dataset](https://an.kaist.ac.kr/traces/WWW2010.html)
+
+.. |pic| image:: https://raw.githubusercontent.com/Pantynopants/pyGraph/master/TH_pic.png
+
+.. |map| image:: https://raw.githubusercontent.com/Pantynopants/pyGraph/master/TH_MAP.jpg
+
+|map|  
+
+|pic|
