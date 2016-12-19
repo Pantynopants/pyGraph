@@ -227,17 +227,41 @@ def get_total_dist(func):
             return
         if type(dis_list) == tuple:
             dis_list = dis_list[1]
-        templist = [] #[(a,b)]
-        if len(dis_list)>0 and type(dis_list[0]) != tuple:
-            for i in range(len(dis_list) - 1):
-                templist.append( (dis_list[i], dis_list[i+1]) )
-        else: templist = dis_list
-        # print(templist)
-        distance = 0
-        for i,j in templist:
-            distance += graph.loc[i,j]
+        distance = get_distance(graph, dis_list)
         return origin_return, distance
     return _inner
+
+def get_distance(graph, dis_list):
+    r"""
+    parameter
+    -----------
+    graph: dataframe or ALGraph
+    dis_list: list
+
+    return
+    ---------
+    distance: number
+    """
+    templist = [] #[(a,b)]
+    if len(dis_list)>0 and type(dis_list[0]) != tuple:
+        for i in range(len(dis_list) - 1):
+            templist.append( (dis_list[i], dis_list[i+1]) )
+    else: templist = dis_list
+    # print(templist)
+    distance = 0
+    if type(graph) == pd.DataFrame:
+        
+        for i,j in templist:
+            distance += graph.loc[i,j]
+    else:
+        for i,j in templist:
+            try:
+                distance += graph[i][j]
+            except:
+                continue
+            
+    return distance
+
 
 def not_implemented_for(*graph_types):
     """Decorator to mark algorithms as not implemented

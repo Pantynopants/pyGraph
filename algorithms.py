@@ -1,11 +1,14 @@
 # -*- coding=utf-8 -*-
 
-import utils
 import copy
-import pandas as pd  
 import heapq
 import Queue
+
+import pandas as pd
+
+import utils
 from models import *
+
 
 """
 all algorithms in this model receive Pandas.DataFrame as input
@@ -211,7 +214,8 @@ def prim(graph):
 def DFSTraverse_path(graph, start, goal = None):
     r"""
     DFS with path as return value
-
+    Generator function
+    
     iterable.
     Parameters:
         graph:DataFrame, start:unicode(according to pandas)
